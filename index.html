@@ -9,6 +9,11 @@
 <meta name="description" content="ARC ORIGIN — A digital collection built around identity, rarity and evolution.">
 
 <style>
+
+/* =========================
+   GLOBAL
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -26,23 +31,21 @@ body{
     overflow-x:hidden;
 }
 
-/* =========================
-   GLOBAL
-========================= */
-
 :root{
     --bg:#08090c;
     --card:#101217;
-    --card2:#14161d;
     --border:rgba(255,255,255,.09);
     --muted:#8e929d;
-    --white:#f7f7f7;
     --accent:#b8ff45;
 }
 
 a{
     color:inherit;
     text-decoration:none;
+}
+
+button{
+    font-family:inherit;
 }
 
 .container{
@@ -76,6 +79,7 @@ section{
     margin-top:22px;
 }
 
+
 /* =========================
    NAVBAR
 ========================= */
@@ -86,15 +90,23 @@ section{
     left:0;
     width:100%;
     z-index:1000;
+
     border-bottom:1px solid rgba(255,255,255,.06);
-    background:rgba(8,9,12,.78);
-    backdrop-filter:blur(16px);
+
+    background:rgba(8,9,12,.94);
+
+    /* Reduced blur for better scrolling */
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    transform:translateZ(0);
 }
 
 .nav-inner{
     width:min(1280px,94%);
     height:76px;
     margin:auto;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -121,7 +133,7 @@ section{
     font-size:11px;
     font-weight:700;
     letter-spacing:1.5px;
-    transition:.25s ease;
+    transition:color .2s ease;
 }
 
 .nav-links a:hover{
@@ -134,6 +146,7 @@ section{
     border-radius:4px;
 }
 
+
 /* =========================
    HERO
 ========================= */
@@ -141,23 +154,30 @@ section{
 .hero{
     min-height:100vh;
     padding-top:76px;
+
     display:flex;
     align-items:center;
+
     position:relative;
 }
 
 .hero::before{
     content:"";
+
     position:absolute;
+
     width:650px;
     height:650px;
+
     left:-250px;
     top:10%;
+
     background:radial-gradient(
         circle,
-        rgba(184,255,69,.055),
+        rgba(184,255,69,.045),
         transparent 65%
     );
+
     pointer-events:none;
 }
 
@@ -208,13 +228,21 @@ section{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     min-height:48px;
     padding:0 21px;
+
     border:1px solid var(--border);
+
     font-size:11px;
     font-weight:800;
     letter-spacing:1.5px;
-    transition:.25s ease;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 .btn-primary{
@@ -225,13 +253,14 @@ section{
 
 .btn-primary:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(184,255,69,.12);
+    box-shadow:0 8px 20px rgba(184,255,69,.10);
 }
 
 .btn-secondary:hover{
     border-color:rgba(255,255,255,.25);
     background:rgba(255,255,255,.04);
 }
+
 
 /* =========================
    HERO NFT
@@ -245,52 +274,65 @@ section{
 .art-wrapper{
     width:min(460px,100%);
     aspect-ratio:62 / 75;
+
     position:relative;
     padding:9px;
+
     background:linear-gradient(
         135deg,
-        rgba(255,255,255,.16),
-        rgba(255,255,255,.025)
+        rgba(255,255,255,.14),
+        rgba(255,255,255,.02)
     );
+
     border:1px solid rgba(255,255,255,.12);
+
     box-shadow:
-        0 35px 80px rgba(0,0,0,.45),
-        0 0 45px rgba(184,255,69,.025);
+        0 25px 60px rgba(0,0,0,.40),
+        0 0 30px rgba(184,255,69,.02);
+
+    transform:translateZ(0);
 }
 
 .art-wrapper::before{
     content:"";
+
     position:absolute;
     inset:4px;
+
     border:1px solid rgba(255,255,255,.05);
+
     pointer-events:none;
 }
 
 .art{
     position:absolute;
     inset:9px;
+
     overflow:hidden;
     background:#111;
-}
 
-/* Subtle premium NFT transition */
+    transform:translateZ(0);
+}
 
 .hero-nft{
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
     object-position:center;
 
     opacity:1;
     transform:scale(1);
+
     filter:brightness(1);
 
-    will-change:transform, opacity, filter;
+    will-change:transform,opacity;
 
     transition:
         opacity .18s ease,
-        transform .22s cubic-bezier(.22,.7,.25,1),
+        transform .22s ease,
         filter .22s ease;
 }
 
@@ -301,20 +343,21 @@ section{
 }
 
 .hero-nft.entering{
-    animation:nftSoftEnter .32s cubic-bezier(.22,.75,.25,1) forwards;
+    animation:nftSoftEnter .32s ease forwards;
 }
 
 @keyframes nftSoftEnter{
+
     0%{
         opacity:0;
         transform:scale(1.012);
-        filter:brightness(1.08);
+        filter:brightness(1.05);
     }
 
     45%{
         opacity:1;
         transform:scale(1.004);
-        filter:brightness(1.025);
+        filter:brightness(1.015);
     }
 
     100%{
@@ -322,27 +365,36 @@ section{
         transform:scale(1);
         filter:brightness(1);
     }
+
 }
 
 .art-wrapper::after{
     content:"";
+
     position:absolute;
     inset:-1px;
+
     pointer-events:none;
-    border:1px solid rgba(184,255,69,.025);
-    box-shadow:0 0 24px rgba(184,255,69,.025);
+
+    border:1px solid rgba(184,255,69,.02);
 }
 
-/* Slider controls */
+
+/* =========================
+   SLIDER
+========================= */
 
 .slider-controls{
     position:absolute;
+
     bottom:18px;
     left:18px;
     right:18px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     z-index:5;
 }
 
@@ -354,16 +406,23 @@ section{
 .slider-arrow{
     width:34px;
     height:34px;
+
     border:1px solid rgba(255,255,255,.13);
-    background:rgba(5,5,7,.72);
+
+    background:rgba(5,5,7,.82);
+
     color:white;
+
     cursor:pointer;
-    transition:.2s ease;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
 }
 
 .slider-arrow:hover{
     border-color:rgba(255,255,255,.35);
-    background:rgba(20,20,23,.9);
+    background:rgba(20,20,23,.95);
 }
 
 .slider-dots{
@@ -374,10 +433,16 @@ section{
 .dot{
     width:5px;
     height:5px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.28);
+
     cursor:pointer;
-    transition:.25s ease;
+
+    transition:
+        width .2s ease,
+        background .2s ease;
 }
 
 .dot.active{
@@ -385,6 +450,7 @@ section{
     border-radius:10px;
     background:var(--accent);
 }
+
 
 /* =========================
    COLLECTION
@@ -398,6 +464,7 @@ section{
     display:flex;
     align-items:flex-end;
     justify-content:space-between;
+
     gap:30px;
     margin-bottom:45px;
 }
@@ -411,13 +478,21 @@ section{
 .filter{
     background:transparent;
     color:#777b84;
+
     border:1px solid var(--border);
+
     padding:10px 14px;
+
     font-size:10px;
     font-weight:800;
     letter-spacing:1px;
+
     cursor:pointer;
-    transition:.2s ease;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
 }
 
 .filter:hover,
@@ -435,18 +510,26 @@ section{
 
 .nft-card{
     background:var(--card);
+
     border:1px solid var(--border);
+
     padding:8px;
+
     cursor:pointer;
+
     transition:
-        transform .3s ease,
-        border-color .3s ease,
-        background .3s ease;
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+
+    transform:translateZ(0);
 }
 
 .nft-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-4px);
+
     border-color:rgba(184,255,69,.25);
+
     background:#13151a;
 }
 
@@ -456,20 +539,29 @@ section{
 
 .nft-image{
     aspect-ratio:62 / 75;
+
     overflow:hidden;
+
     background:#15171b;
+
+    transform:translateZ(0);
 }
 
 .nft-image img{
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
-    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+
+    transition:transform .25s ease;
+
+    transform:translateZ(0);
 }
 
 .nft-card:hover .nft-image img{
-    transform:scale(1.025);
+    transform:scale(1.018);
 }
 
 .nft-info{
@@ -478,8 +570,10 @@ section{
 
 .nft-top{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
+
     gap:10px;
 }
 
@@ -492,15 +586,20 @@ section{
 .rarity{
     font-size:8px;
     letter-spacing:1px;
+
     color:var(--muted);
+
     text-transform:uppercase;
 }
 
 .nft-name{
     font-size:12px;
+
     margin-top:7px;
+
     color:#c9cbd0;
 }
+
 
 /* =========================
    ROADMAP
@@ -508,44 +607,60 @@ section{
 
 .roadmap{
     background:#0b0c10;
+
     border-top:1px solid rgba(255,255,255,.05);
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .roadmap-grid{
     margin-top:55px;
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:12px;
 }
 
 .roadmap-card{
     min-height:280px;
+
     padding:25px;
+
     border:1px solid var(--border);
+
     background:rgba(255,255,255,.018);
+
     position:relative;
 }
 
 .roadmap-number{
     color:var(--accent);
+
     font-size:11px;
     font-weight:900;
+
     letter-spacing:2px;
 }
 
 .roadmap-card h3{
     margin-top:65px;
+
     font-size:18px;
+
     letter-spacing:1px;
 }
 
 .roadmap-card p{
     color:#858993;
+
     line-height:1.65;
+
     font-size:13px;
+
     margin-top:15px;
 }
+
 
 /* =========================
    FAQ
@@ -553,6 +668,7 @@ section{
 
 .faq-grid{
     margin-top:50px;
+
     max-width:850px;
 }
 
@@ -566,32 +682,52 @@ section{
 
 .faq-question{
     width:100%;
+
     padding:24px 0;
+
     background:none;
+
     border:0;
+
     color:white;
+
     text-align:left;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     cursor:pointer;
+
     font-size:14px;
+
     font-weight:700;
 }
 
 .faq-icon{
     font-size:20px;
+
     color:#777;
-    transition:.25s ease;
+
+    transition:
+        transform .2s ease,
+        color .2s ease;
 }
 
 .faq-answer{
     max-height:0;
+
     overflow:hidden;
+
     color:#838792;
+
     line-height:1.7;
+
     font-size:13px;
-    transition:max-height .3s ease;
+
+    transition:max-height .25s ease;
 }
 
 .faq-answer p{
@@ -600,8 +736,10 @@ section{
 
 .faq-item.open .faq-icon{
     transform:rotate(45deg);
+
     color:var(--accent);
 }
+
 
 /* =========================
    COMMUNITY
@@ -609,24 +747,33 @@ section{
 
 .community{
     text-align:center;
+
     padding:130px 0;
+
     position:relative;
+
     overflow:hidden;
 }
 
 .community::before{
     content:"";
+
     position:absolute;
+
     width:600px;
     height:300px;
+
     left:50%;
     top:30%;
+
     transform:translate(-50%,-50%);
+
     background:radial-gradient(
         ellipse,
-        rgba(184,255,69,.07),
+        rgba(184,255,69,.05),
         transparent 70%
     );
+
     pointer-events:none;
 }
 
@@ -639,29 +786,40 @@ section{
     margin-top:30px;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
 
 footer{
     border-top:1px solid var(--border);
+
     padding:28px 0;
 }
 
 .footer-inner{
     width:min(1180px,92%);
+
     margin:auto;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     gap:20px;
+
     color:#62666f;
+
     font-size:10px;
+
     letter-spacing:1px;
 }
 
 .footer-links{
     display:flex;
+
     gap:20px;
 }
 
@@ -669,22 +827,32 @@ footer{
     color:white;
 }
 
+
 /* =========================
    REVEAL
 ========================= */
 
+/*
+   Reduced movement and duration.
+   This is much lighter during scrolling.
+*/
+
 .reveal{
     opacity:0;
-    transform:translateY(22px);
+
+    transform:translateY(12px);
+
     transition:
-        opacity .7s ease,
-        transform .7s cubic-bezier(.2,.7,.2,1);
+        opacity .45s ease,
+        transform .45s ease;
 }
 
 .reveal.visible{
     opacity:1;
+
     transform:translateY(0);
 }
+
 
 /* =========================
    RESPONSIVE
@@ -694,6 +862,7 @@ footer{
 
     .hero-grid{
         grid-template-columns:1fr;
+
         gap:60px;
     }
 
@@ -715,10 +884,23 @@ footer{
 
 }
 
+
 @media(max-width:700px){
 
     section{
         padding:80px 0;
+    }
+
+    /*
+       Disable blur completely on small screens.
+       This can make a big difference on mobile.
+    */
+
+    .navbar{
+        backdrop-filter:none;
+        -webkit-backdrop-filter:none;
+
+        background:rgba(8,9,12,.97);
     }
 
     .nav-links a:not(.x-link){
@@ -735,6 +917,7 @@ footer{
 
     .hero h1{
         font-size:clamp(58px,18vw,90px);
+
         letter-spacing:-5px;
     }
 
@@ -752,6 +935,7 @@ footer{
 
     .nft-grid{
         grid-template-columns:repeat(2,1fr);
+
         gap:10px;
     }
 
@@ -769,10 +953,12 @@ footer{
 
     .footer-inner{
         flex-direction:column;
+
         align-items:flex-start;
     }
 
 }
+
 
 @media(max-width:430px){
 
@@ -801,16 +987,41 @@ footer{
     }
 
 }
+
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================
      NAVBAR
 ========================= -->
 
 <header class="navbar">
+
     <div class="nav-inner">
 
         <a href="#home" class="logo">
@@ -818,10 +1029,22 @@ footer{
         </a>
 
         <nav class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#collection">COLLECTION</a>
-            <a href="#roadmap">ROADMAP</a>
-            <a href="#faq">FAQ</a>
+
+            <a href="#home">
+                HOME
+            </a>
+
+            <a href="#collection">
+                COLLECTION
+            </a>
+
+            <a href="#roadmap">
+                ROADMAP
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
 
             <a
                 href="https://x.com/ArcOriginfun"
@@ -831,9 +1054,11 @@ footer{
             >
                 X COMMUNITY
             </a>
+
         </nav>
 
     </div>
+
 </header>
 
 
@@ -848,6 +1073,7 @@ footer{
     <div class="container">
 
         <div class="hero-grid">
+
 
             <div class="hero-content reveal">
 
@@ -867,7 +1093,10 @@ footer{
 
                 <div class="hero-buttons">
 
-                    <a href="#collection" class="btn btn-primary">
+                    <a
+                        href="#collection"
+                        class="btn btn-primary"
+                    >
                         EXPLORE COLLECTION
                     </a>
 
@@ -896,6 +1125,8 @@ footer{
                             class="hero-nft"
                             src="images/nft-01.jpg"
                             alt="ARC ORIGIN NFT #001"
+                            fetchpriority="high"
+                            decoding="async"
                         >
 
                     </div>
@@ -923,7 +1154,11 @@ footer{
 
                         </div>
 
-                        <div class="slider-dots" id="sliderDots"></div>
+
+                        <div
+                            class="slider-dots"
+                            id="sliderDots"
+                        ></div>
 
                     </div>
 
@@ -942,13 +1177,18 @@ footer{
      COLLECTION
 ========================= -->
 
-<section class="collection" id="collection">
+<section
+    class="collection"
+    id="collection"
+>
 
     <div class="container">
+
 
         <div class="collection-header reveal">
 
             <div>
+
                 <div class="section-label">
                     THE COLLECTION
                 </div>
@@ -961,24 +1201,37 @@ footer{
                     Ten unique characters. Different identities.
                     One universe — ARC ORIGIN.
                 </p>
+
             </div>
 
 
             <div class="filters">
 
-                <button class="filter active" data-filter="all">
+                <button
+                    class="filter active"
+                    data-filter="all"
+                >
                     ALL
                 </button>
 
-                <button class="filter" data-filter="genesis">
+                <button
+                    class="filter"
+                    data-filter="genesis"
+                >
                     GENESIS
                 </button>
 
-                <button class="filter" data-filter="rare">
+                <button
+                    class="filter"
+                    data-filter="rare"
+                >
                     RARE
                 </button>
 
-                <button class="filter" data-filter="legendary">
+                <button
+                    class="filter"
+                    data-filter="legendary"
+                >
                     LEGENDARY
                 </button>
 
@@ -989,6 +1242,7 @@ footer{
 
         <div class="nft-grid reveal">
 
+
             <!-- NFT 01 -->
 
             <div
@@ -998,14 +1252,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-01.jpg" alt="ARC ORIGIN #001">
+
+                    <img
+                        src="images/nft-01.jpg"
+                        alt="ARC ORIGIN #001"
+                        loading="eager"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#001</span>
-                        <span class="rarity">Legendary</span>
+
+                        <span class="nft-number">
+                            #001
+                        </span>
+
+                        <span class="rarity">
+                            Legendary
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1026,14 +1294,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-02.jpg" alt="ARC ORIGIN #002">
+
+                    <img
+                        src="images/nft-02.jpg"
+                        alt="ARC ORIGIN #002"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#002</span>
-                        <span class="rarity">Genesis</span>
+
+                        <span class="nft-number">
+                            #002
+                        </span>
+
+                        <span class="rarity">
+                            Genesis
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1054,14 +1336,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-03.jpg" alt="ARC ORIGIN #003">
+
+                    <img
+                        src="images/nft-03.jpg"
+                        alt="ARC ORIGIN #003"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#003</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #003
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1082,14 +1378,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-04.jpg" alt="ARC ORIGIN #004">
+
+                    <img
+                        src="images/nft-04.jpg"
+                        alt="ARC ORIGIN #004"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#004</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #004
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1110,14 +1420,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-05.jpg" alt="ARC ORIGIN #005">
+
+                    <img
+                        src="images/nft-05.jpg"
+                        alt="ARC ORIGIN #005"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#005</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #005
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1138,14 +1462,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-06.jpg" alt="ARC ORIGIN #006">
+
+                    <img
+                        src="images/nft-06.jpg"
+                        alt="ARC ORIGIN #006"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#006</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #006
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1166,14 +1504,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-07.jpg" alt="ARC ORIGIN #007">
+
+                    <img
+                        src="images/nft-07.jpg"
+                        alt="ARC ORIGIN #007"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#007</span>
-                        <span class="rarity">Legendary</span>
+
+                        <span class="nft-number">
+                            #007
+                        </span>
+
+                        <span class="rarity">
+                            Legendary
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1194,14 +1546,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-08.jpg" alt="ARC ORIGIN #008">
+
+                    <img
+                        src="images/nft-08.jpg"
+                        alt="ARC ORIGIN #008"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#008</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #008
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1222,14 +1588,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-09.jpg" alt="ARC ORIGIN #009">
+
+                    <img
+                        src="images/nft-09.jpg"
+                        alt="ARC ORIGIN #009"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#009</span>
-                        <span class="rarity">Rare</span>
+
+                        <span class="nft-number">
+                            #009
+                        </span>
+
+                        <span class="rarity">
+                            Rare
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1250,14 +1630,28 @@ footer{
             >
 
                 <div class="nft-image">
-                    <img src="images/nft-10.jpg" alt="ARC ORIGIN #010">
+
+                    <img
+                        src="images/nft-10.jpg"
+                        alt="ARC ORIGIN #010"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
                 </div>
 
                 <div class="nft-info">
 
                     <div class="nft-top">
-                        <span class="nft-number">#010</span>
-                        <span class="rarity">Legendary</span>
+
+                        <span class="nft-number">
+                            #010
+                        </span>
+
+                        <span class="rarity">
+                            Legendary
+                        </span>
+
                     </div>
 
                     <div class="nft-name">
@@ -1267,6 +1661,7 @@ footer{
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1279,9 +1674,13 @@ footer{
      ROADMAP
 ========================= -->
 
-<section class="roadmap" id="roadmap">
+<section
+    class="roadmap"
+    id="roadmap"
+>
 
     <div class="container">
+
 
         <div class="reveal">
 
@@ -1303,11 +1702,16 @@ footer{
 
         <div class="roadmap-grid reveal">
 
+
             <div class="roadmap-card">
 
-                <div class="roadmap-number">01 / GENESIS</div>
+                <div class="roadmap-number">
+                    01 / GENESIS
+                </div>
 
-                <h3>THE BEGINNING</h3>
+                <h3>
+                    THE BEGINNING
+                </h3>
 
                 <p>
                     Collection launch, community building
@@ -1319,9 +1723,13 @@ footer{
 
             <div class="roadmap-card">
 
-                <div class="roadmap-number">02 / HOLDERS</div>
+                <div class="roadmap-number">
+                    02 / HOLDERS
+                </div>
 
-                <h3>THE COMMUNITY</h3>
+                <h3>
+                    THE COMMUNITY
+                </h3>
 
                 <p>
                     Future holder-focused benefits,
@@ -1334,9 +1742,13 @@ footer{
 
             <div class="roadmap-card">
 
-                <div class="roadmap-number">03 / UTILITY</div>
+                <div class="roadmap-number">
+                    03 / UTILITY
+                </div>
 
-                <h3>MORE TO COME</h3>
+                <h3>
+                    MORE TO COME
+                </h3>
 
                 <p>
                     More utility, community events,
@@ -1349,9 +1761,13 @@ footer{
 
             <div class="roadmap-card">
 
-                <div class="roadmap-number">04 / EXPANSION</div>
+                <div class="roadmap-number">
+                    04 / EXPANSION
+                </div>
 
-                <h3>BEYOND THE ARC</h3>
+                <h3>
+                    BEYOND THE ARC
+                </h3>
 
                 <p>
                     New collections, collaborations,
@@ -1359,6 +1775,7 @@ footer{
                 </p>
 
             </div>
+
 
         </div>
 
@@ -1371,9 +1788,13 @@ footer{
      FAQ
 ========================= -->
 
-<section class="faq" id="faq">
+<section
+    class="faq"
+    id="faq"
+>
 
     <div class="container">
+
 
         <div class="reveal">
 
@@ -1390,6 +1811,7 @@ footer{
 
         <div class="faq-grid reveal">
 
+
             <div class="faq-item">
 
                 <button class="faq-question">
@@ -1398,7 +1820,9 @@ footer{
                         What is ARC ORIGIN?
                     </span>
 
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon">
+                        +
+                    </span>
 
                 </button>
 
@@ -1423,7 +1847,9 @@ footer{
                         How many NFTs are there?
                     </span>
 
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon">
+                        +
+                    </span>
 
                 </button>
 
@@ -1447,7 +1873,9 @@ footer{
                         Will holders get future benefits?
                     </span>
 
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon">
+                        +
+                    </span>
 
                 </button>
 
@@ -1472,7 +1900,9 @@ footer{
                         Where can I follow ARC?
                     </span>
 
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon">
+                        +
+                    </span>
 
                 </button>
 
@@ -1486,6 +1916,7 @@ footer{
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1571,6 +2002,7 @@ footer{
 ========================= */
 
 const nfts = [
+
     "images/nft-01.jpg",
     "images/nft-02.jpg",
     "images/nft-03.jpg",
@@ -1581,6 +2013,7 @@ const nfts = [
     "images/nft-08.jpg",
     "images/nft-09.jpg",
     "images/nft-10.jpg"
+
 ];
 
 
@@ -1588,43 +2021,60 @@ const nfts = [
    HERO SLIDER
 ========================= */
 
-const heroNFT = document.getElementById("heroNFT");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const sliderDots = document.getElementById("sliderDots");
+const heroNFT =
+    document.getElementById("heroNFT");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const sliderDots =
+    document.getElementById("sliderDots");
+
 
 let currentIndex = 0;
+
 let isAnimating = false;
+
 let autoSlide = null;
 
 
-/* Create dots */
+/* =========================
+   CREATE DOTS
+========================= */
 
-nfts.forEach((_, index) => {
+nfts.forEach((_,index) => {
 
-    const dot = document.createElement("span");
+    const dot =
+        document.createElement("span");
 
     dot.className = "dot";
 
     if(index === 0){
+
         dot.classList.add("active");
+
     }
 
-    dot.addEventListener("click", () => {
-        changeNFT(index);
-    });
+    dot.addEventListener(
+        "click",
+        () => changeNFT(index)
+    );
 
     sliderDots.appendChild(dot);
 
 });
 
 
-const dots = document.querySelectorAll(".dot");
+const dots =
+    document.querySelectorAll(".dot");
 
 
 function updateDots(){
 
-    dots.forEach((dot, index) => {
+    dots.forEach((dot,index) => {
 
         dot.classList.toggle(
             "active",
@@ -1636,50 +2086,79 @@ function updateDots(){
 }
 
 
-/* Premium subtle NFT change */
+/* =========================
+   NFT CHANGE
+========================= */
 
 function changeNFT(newIndex){
 
-    if(isAnimating || newIndex === currentIndex){
+    if(
+        isAnimating ||
+        newIndex === currentIndex
+    ){
+
         return;
+
     }
+
 
     isAnimating = true;
 
-    heroNFT.classList.remove("entering");
 
-    heroNFT.classList.add("switching");
+    heroNFT.classList.remove(
+        "entering"
+    );
+
+
+    heroNFT.classList.add(
+        "switching"
+    );
 
 
     setTimeout(() => {
 
         currentIndex = newIndex;
 
-        heroNFT.src = nfts[currentIndex];
 
-        heroNFT.classList.remove("switching");
+        heroNFT.src =
+            nfts[currentIndex];
+
+
+        heroNFT.classList.remove(
+            "switching"
+        );
+
 
         void heroNFT.offsetWidth;
 
-        heroNFT.classList.add("entering");
+
+        heroNFT.classList.add(
+            "entering"
+        );
+
 
         updateDots();
 
 
         setTimeout(() => {
 
-            heroNFT.classList.remove("entering");
+            heroNFT.classList.remove(
+                "entering"
+            );
 
             isAnimating = false;
 
-        }, 340);
+        },330);
 
-    }, 180);
+
+    },180);
 
 }
 
 
-/* Next */
+/* =========================
+   NEXT
+========================= */
 
 function nextNFT(){
 
@@ -1687,17 +2166,22 @@ function nextNFT(){
         (currentIndex + 1) % nfts.length;
 
     changeNFT(nextIndex);
+
 }
 
 
-/* Previous */
+/* =========================
+   PREVIOUS
+========================= */
 
 function previousNFT(){
 
     const previousIndex =
-        (currentIndex - 1 + nfts.length) % nfts.length;
+        (currentIndex - 1 + nfts.length)
+        % nfts.length;
 
     changeNFT(previousIndex);
+
 }
 
 
@@ -1705,6 +2189,7 @@ nextBtn.addEventListener(
     "click",
     nextNFT
 );
+
 
 prevBtn.addEventListener(
     "click",
@@ -1720,13 +2205,17 @@ function startAutoSlide(){
 
     clearInterval(autoSlide);
 
-    autoSlide = setInterval(() => {
 
-        if(!isAnimating){
-            nextNFT();
-        }
+    autoSlide =
+        setInterval(() => {
 
-    }, 2800);
+            if(!isAnimating){
+
+                nextNFT();
+
+            }
+
+        },2800);
 
 }
 
@@ -1747,6 +2236,7 @@ artWrapper.addEventListener(
     stopAutoSlide
 );
 
+
 artWrapper.addEventListener(
     "mouseleave",
     startAutoSlide
@@ -1757,7 +2247,7 @@ startAutoSlide();
 
 
 /* =========================
-   COLLECTION CARD CLICK
+   COLLECTION CARDS
 ========================= */
 
 const nftCards =
@@ -1766,19 +2256,29 @@ const nftCards =
 
 nftCards.forEach(card => {
 
-    card.addEventListener("click", () => {
+    card.addEventListener(
+        "click",
+        () => {
 
-        const index =
-            Number(card.dataset.index);
+            const index =
+                Number(
+                    card.dataset.index
+                );
 
-        changeNFT(index);
 
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
+            changeNFT(index);
 
-    });
+
+            window.scrollTo({
+
+                top:0,
+
+                behavior:"smooth"
+
+            });
+
+        }
+    );
 
 });
 
@@ -1793,39 +2293,57 @@ const filters =
 
 filters.forEach(filter => {
 
-    filter.addEventListener("click", () => {
-
-        filters.forEach(item => {
-            item.classList.remove("active");
-        });
-
-        filter.classList.add("active");
-
-        const selected =
-            filter.dataset.filter;
+    filter.addEventListener(
+        "click",
+        () => {
 
 
-        nftCards.forEach(card => {
+            filters.forEach(item => {
 
-            const rarity =
-                card.dataset.rarity;
+                item.classList.remove(
+                    "active"
+                );
 
-            if(
-                selected === "all" ||
-                rarity === selected
-            ){
+            });
 
-                card.classList.remove("hidden");
 
-            }else{
+            filter.classList.add(
+                "active"
+            );
 
-                card.classList.add("hidden");
 
-            }
+            const selected =
+                filter.dataset.filter;
 
-        });
 
-    });
+            nftCards.forEach(card => {
+
+                const rarity =
+                    card.dataset.rarity;
+
+
+                if(
+                    selected === "all" ||
+                    rarity === selected
+                ){
+
+                    card.classList.remove(
+                        "hidden"
+                    );
+
+                }
+                else{
+
+                    card.classList.add(
+                        "hidden"
+                    );
+
+                }
+
+            });
+
+        }
+    );
 
 });
 
@@ -1835,45 +2353,64 @@ filters.forEach(filter => {
 ========================= */
 
 const faqItems =
-    document.querySelectorAll(".faq-item");
+    document.querySelectorAll(
+        ".faq-item"
+    );
 
 
 faqItems.forEach(item => {
 
     const question =
-        item.querySelector(".faq-question");
+        item.querySelector(
+            ".faq-question"
+        );
+
 
     const answer =
-        item.querySelector(".faq-answer");
+        item.querySelector(
+            ".faq-answer"
+        );
 
 
-    question.addEventListener("click", () => {
-
-        const alreadyOpen =
-            item.classList.contains("open");
-
-
-        faqItems.forEach(other => {
-
-            other.classList.remove("open");
-
-            other.querySelector(
-                ".faq-answer"
-            ).style.maxHeight = null;
-
-        });
+    question.addEventListener(
+        "click",
+        () => {
 
 
-        if(!alreadyOpen){
+            const alreadyOpen =
+                item.classList.contains(
+                    "open"
+                );
 
-            item.classList.add("open");
 
-            answer.style.maxHeight =
-                answer.scrollHeight + "px";
+            faqItems.forEach(other => {
+
+                other.classList.remove(
+                    "open"
+                );
+
+
+                other.querySelector(
+                    ".faq-answer"
+                ).style.maxHeight = null;
+
+            });
+
+
+            if(!alreadyOpen){
+
+                item.classList.add(
+                    "open"
+                );
+
+
+                answer.style.maxHeight =
+                    answer.scrollHeight + "px";
+
+            }
 
         }
-
-    });
+    );
 
 });
 
@@ -1883,11 +2420,19 @@ faqItems.forEach(item => {
 ========================= */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+    document.querySelectorAll(
+        ".reveal"
+    );
 
+
+/*
+   Lightweight IntersectionObserver.
+   No scroll event listener is used.
+*/
 
 const observer =
     new IntersectionObserver(
+
         entries => {
 
             entries.forEach(entry => {
@@ -1898,6 +2443,7 @@ const observer =
                         "visible"
                     );
 
+
                     observer.unobserve(
                         entry.target
                     );
@@ -1907,9 +2453,12 @@ const observer =
             });
 
         },
+
         {
-            threshold:.12
+            threshold:.08,
+            rootMargin:"0px 0px -30px 0px"
         }
+
     );
 
 
@@ -1921,17 +2470,45 @@ revealElements.forEach(element => {
 
 
 /* =========================
-   PRELOAD ALL NFT IMAGES
+   PRELOAD HERO SLIDER
 ========================= */
 
-nfts.forEach(src => {
+/*
+   Load remaining hero images after
+   the page has become idle.
+*/
 
-    const image =
-        new Image();
+function preloadImages(){
 
-    image.src = src;
+    nfts.slice(1).forEach(src => {
 
-});
+        const image =
+            new Image();
+
+        image.decoding = "async";
+
+        image.src = src;
+
+    });
+
+}
+
+
+if("requestIdleCallback" in window){
+
+    requestIdleCallback(
+        preloadImages
+    );
+
+}
+else{
+
+    setTimeout(
+        preloadImages,
+        1500
+    );
+
+}
 
 </script>
 
