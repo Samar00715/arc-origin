@@ -294,15 +294,11 @@ section{
         filter .22s ease;
 }
 
-/* Old NFT leaves very slightly */
-
 .hero-nft.switching{
     opacity:0;
     transform:scale(.992);
     filter:brightness(.94);
 }
-
-/* New NFT enters subtly */
 
 .hero-nft.entering{
     animation:nftSoftEnter .32s cubic-bezier(.22,.75,.25,1) forwards;
@@ -327,8 +323,6 @@ section{
         filter:brightness(1);
     }
 }
-
-/* Very subtle light around frame */
 
 .art-wrapper::after{
     content:"";
@@ -830,7 +824,7 @@ footer{
             <a href="#faq">FAQ</a>
 
             <a
-                href="https://x.com/saiffbtx"
+                href="https://x.com/ArcOriginfun"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="x-link"
@@ -878,7 +872,7 @@ footer{
                     </a>
 
                     <a
-                        href="https://x.com/saiffbtx"
+                        href="https://x.com/ArcOriginfun"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn btn-secondary"
@@ -1522,12 +1516,12 @@ footer{
         </p>
 
         <a
-            href="https://x.com/saiffbtx"
+            href="https://x.com/ArcOriginfun"
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-primary community-btn"
         >
-            FOLLOW @SAIFFBTX
+            FOLLOW @ARCORIGINFUN
         </a>
 
     </div>
@@ -1552,11 +1546,11 @@ footer{
         <div class="footer-links">
 
             <a
-                href="https://x.com/saiffbtx"
+                href="https://x.com/ArcOriginfun"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                X / @SAIFFBTX
+                X / @ARCORIGINFUN
             </a>
 
             <a href="#home">
@@ -1654,12 +1648,6 @@ function changeNFT(newIndex){
 
     heroNFT.classList.remove("entering");
 
-    /*
-        Very short exit.
-        No crossfade.
-        Just a tiny scale/brightness movement.
-    */
-
     heroNFT.classList.add("switching");
 
 
@@ -1670,10 +1658,6 @@ function changeNFT(newIndex){
         heroNFT.src = nfts[currentIndex];
 
         heroNFT.classList.remove("switching");
-
-        /*
-            Force browser to restart animation
-        */
 
         void heroNFT.offsetWidth;
 
