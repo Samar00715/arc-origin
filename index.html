@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARC ORIGIN — Digital Collection</title>
+
+<meta name="description" content="ARC ORIGIN — A digital collection built around identity, rarity and evolution.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#08090c;
+    color:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+:root{
+    --bg:#08090c;
+    --card:#101217;
+    --card2:#14161d;
+    --border:rgba(255,255,255,.09);
+    --muted:#8e929d;
+    --white:#f7f7f7;
+    --accent:#b8ff45;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+section{
+    padding:110px 0;
+}
+
+.section-label{
+    color:var(--accent);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:clamp(38px,6vw,70px);
+    line-height:.95;
+    letter-spacing:-3px;
+    text-transform:uppercase;
+}
+
+.section-text{
+    color:var(--muted);
+    max-width:600px;
+    line-height:1.7;
+    margin-top:22px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    background:rgba(8,9,12,.78);
+    backdrop-filter:blur(16px);
+}
+
+.nav-inner{
+    width:min(1280px,94%);
+    height:76px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:17px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#aeb1ba;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    transition:.25s ease;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.x-link{
+    border:1px solid var(--border);
+    padding:11px 15px;
+    border-radius:4px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    padding-top:76px;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    left:-250px;
+    top:10%;
+    background:radial-gradient(
+        circle,
+        rgba(184,255,69,.055),
+        transparent 65%
+    );
+    pointer-events:none;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.hero-small{
+    color:var(--accent);
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:4px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(64px,9vw,125px);
+    line-height:.78;
+    letter-spacing:-7px;
+    font-weight:950;
+    text-transform:uppercase;
+}
+
+.hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.55);
+}
+
+.hero-description{
+    color:#969aa4;
+    line-height:1.7;
+    max-width:500px;
+    margin-top:30px;
+    font-size:15px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:32px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:48px;
+    padding:0 21px;
+    border:1px solid var(--border);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    transition:.25s ease;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#08090c;
+    border-color:var(--accent);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(184,255,69,.12);
+}
+
+.btn-secondary:hover{
+    border-color:rgba(255,255,255,.25);
+    background:rgba(255,255,255,.04);
+}
+
+/* =========================
+   HERO NFT
+========================= */
+
+.hero-art{
+    display:flex;
+    justify-content:center;
+}
+
+.art-wrapper{
+    width:min(460px,100%);
+    aspect-ratio:62 / 75;
+    position:relative;
+    padding:9px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.16),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.45),
+        0 0 45px rgba(184,255,69,.025);
+}
+
+.art-wrapper::before{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1px solid rgba(255,255,255,.05);
+    pointer-events:none;
+}
+
+.art{
+    position:absolute;
+    inset:9px;
+    overflow:hidden;
+    background:#111;
+}
+
+/* Subtle premium NFT transition */
+
+.hero-nft{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+
+    opacity:1;
+    transform:scale(1);
+    filter:brightness(1);
+
+    will-change:transform, opacity, filter;
+
+    transition:
+        opacity .18s ease,
+        transform .22s cubic-bezier(.22,.7,.25,1),
+        filter .22s ease;
+}
+
+/* Old NFT leaves very slightly */
+
+.hero-nft.switching{
+    opacity:0;
+    transform:scale(.992);
+    filter:brightness(.94);
+}
+
+/* New NFT enters subtly */
+
+.hero-nft.entering{
+    animation:nftSoftEnter .32s cubic-bezier(.22,.75,.25,1) forwards;
+}
+
+@keyframes nftSoftEnter{
+    0%{
+        opacity:0;
+        transform:scale(1.012);
+        filter:brightness(1.08);
+    }
+
+    45%{
+        opacity:1;
+        transform:scale(1.004);
+        filter:brightness(1.025);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+        filter:brightness(1);
+    }
+}
+
+/* Very subtle light around frame */
+
+.art-wrapper::after{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    pointer-events:none;
+    border:1px solid rgba(184,255,69,.025);
+    box-shadow:0 0 24px rgba(184,255,69,.025);
+}
+
+/* Slider controls */
+
+.slider-controls{
+    position:absolute;
+    bottom:18px;
+    left:18px;
+    right:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:5;
+}
+
+.slider-arrows{
+    display:flex;
+    gap:6px;
+}
+
+.slider-arrow{
+    width:34px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(5,5,7,.72);
+    color:white;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.slider-arrow:hover{
+    border-color:rgba(255,255,255,.35);
+    background:rgba(20,20,23,.9);
+}
+
+.slider-dots{
+    display:flex;
+    gap:5px;
+}
+
+.dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(255,255,255,.28);
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.dot.active{
+    width:18px;
+    border-radius:10px;
+    background:var(--accent);
+}
+
+/* =========================
+   COLLECTION
+========================= */
+
+.collection{
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.collection-header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:45px;
+}
+
+.filters{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    background:transparent;
+    color:#777b84;
+    border:1px solid var(--border);
+    padding:10px 14px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.filter:hover,
+.filter.active{
+    color:#0a0b0e;
+    background:var(--accent);
+    border-color:var(--accent);
+}
+
+.nft-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+}
+
+.nft-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:8px;
+    cursor:pointer;
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+}
+
+.nft-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(184,255,69,.25);
+    background:#13151a;
+}
+
+.nft-card.hidden{
+    display:none;
+}
+
+.nft-image{
+    aspect-ratio:62 / 75;
+    overflow:hidden;
+    background:#15171b;
+}
+
+.nft-image img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+}
+
+.nft-card:hover .nft-image img{
+    transform:scale(1.025);
+}
+
+.nft-info{
+    padding:14px 8px 9px;
+}
+
+.nft-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.nft-number{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.rarity{
+    font-size:8px;
+    letter-spacing:1px;
+    color:var(--muted);
+    text-transform:uppercase;
+}
+
+.nft-name{
+    font-size:12px;
+    margin-top:7px;
+    color:#c9cbd0;
+}
+
+/* =========================
+   ROADMAP
+========================= */
+
+.roadmap{
+    background:#0b0c10;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.roadmap-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.roadmap-card{
+    min-height:280px;
+    padding:25px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.018);
+    position:relative;
+}
+
+.roadmap-number{
+    color:var(--accent);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.roadmap-card h3{
+    margin-top:65px;
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+.roadmap-card p{
+    color:#858993;
+    line-height:1.65;
+    font-size:13px;
+    margin-top:15px;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq-grid{
+    margin-top:50px;
+    max-width:850px;
+}
+
+.faq-item{
+    border-top:1px solid var(--border);
+}
+
+.faq-item:last-child{
+    border-bottom:1px solid var(--border);
+}
+
+.faq-question{
+    width:100%;
+    padding:24px 0;
+    background:none;
+    border:0;
+    color:white;
+    text-align:left;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:700;
+}
+
+.faq-icon{
+    font-size:20px;
+    color:#777;
+    transition:.25s ease;
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+    color:#838792;
+    line-height:1.7;
+    font-size:13px;
+    transition:max-height .3s ease;
+}
+
+.faq-answer p{
+    padding:0 0 23px;
+}
+
+.faq-item.open .faq-icon{
+    transform:rotate(45deg);
+    color:var(--accent);
+}
+
+/* =========================
+   COMMUNITY
+========================= */
+
+.community{
+    text-align:center;
+    padding:130px 0;
+    position:relative;
+    overflow:hidden;
+}
+
+.community::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:300px;
+    left:50%;
+    top:30%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(
+        ellipse,
+        rgba(184,255,69,.07),
+        transparent 70%
+    );
+    pointer-events:none;
+}
+
+.community .section-text{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.community-btn{
+    margin-top:30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:28px 0;
+}
+
+.footer-inner{
+    width:min(1180px,92%);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    color:#62666f;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-art{
+        max-width:500px;
+    }
+
+    .nft-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .roadmap-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .nav-links a:not(.x-link){
+        display:none;
+    }
+
+    .nav-inner{
+        height:68px;
+    }
+
+    .hero{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:clamp(58px,18vw,90px);
+        letter-spacing:-5px;
+    }
+
+    .hero-grid{
+        gap:45px;
+    }
+
+    .collection-header{
+        display:block;
+    }
+
+    .filters{
+        margin-top:25px;
+    }
+
+    .nft-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .roadmap-grid{
+        grid-template-columns:1fr;
+    }
+
+    .roadmap-card{
+        min-height:220px;
+    }
+
+    .roadmap-card h3{
+        margin-top:45px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:430px){
+
+    .container{
+        width:90%;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .art-wrapper{
+        padding:7px;
+    }
+
+    .art{
+        inset:7px;
+    }
+
+    .nft-info{
+        padding:11px 6px 7px;
+    }
+
+    .nft-name{
+        font-size:11px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+    <div class="nav-inner">
+
+        <a href="#home" class="logo">
+            ARC<span>.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#collection">COLLECTION</a>
+            <a href="#roadmap">ROADMAP</a>
+            <a href="#faq">FAQ</a>
+
+            <a
+                href="https://x.com/saiffbtx"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="x-link"
+            >
+                X COMMUNITY
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <div class="hero-content reveal">
+
+                <div class="hero-small">
+                    DIGITAL COLLECTION — 001
+                </div>
+
+                <h1>
+                    ARC<br>
+                    <span>ORIGIN</span>
+                </h1>
+
+                <p class="hero-description">
+                    A digital collection built around identity, rarity
+                    and a world that keeps expanding. Enter the ARC.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#collection" class="btn btn-primary">
+                        EXPLORE COLLECTION
+                    </a>
+
+                    <a
+                        href="https://x.com/saiffbtx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                    >
+                        JOIN COMMUNITY
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-art reveal">
+
+                <div class="art-wrapper">
+
+                    <div class="art">
+
+                        <img
+                            id="heroNFT"
+                            class="hero-nft"
+                            src="images/nft-01.jpg"
+                            alt="ARC ORIGIN NFT #001"
+                        >
+
+                    </div>
+
+
+                    <div class="slider-controls">
+
+                        <div class="slider-arrows">
+
+                            <button
+                                class="slider-arrow"
+                                id="prevBtn"
+                                aria-label="Previous NFT"
+                            >
+                                ←
+                            </button>
+
+                            <button
+                                class="slider-arrow"
+                                id="nextBtn"
+                                aria-label="Next NFT"
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+                        <div class="slider-dots" id="sliderDots"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section class="collection" id="collection">
+
+    <div class="container">
+
+        <div class="collection-header reveal">
+
+            <div>
+                <div class="section-label">
+                    THE COLLECTION
+                </div>
+
+                <h2 class="section-title">
+                    10 ORIGINS
+                </h2>
+
+                <p class="section-text">
+                    Ten unique characters. Different identities.
+                    One universe — ARC ORIGIN.
+                </p>
+            </div>
+
+
+            <div class="filters">
+
+                <button class="filter active" data-filter="all">
+                    ALL
+                </button>
+
+                <button class="filter" data-filter="genesis">
+                    GENESIS
+                </button>
+
+                <button class="filter" data-filter="rare">
+                    RARE
+                </button>
+
+                <button class="filter" data-filter="legendary">
+                    LEGENDARY
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nft-grid reveal">
+
+            <!-- NFT 01 -->
+
+            <div
+                class="nft-card"
+                data-index="0"
+                data-rarity="legendary"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-01.jpg" alt="ARC ORIGIN #001">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#001</span>
+                        <span class="rarity">Legendary</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE ORIGIN
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 02 -->
+
+            <div
+                class="nft-card"
+                data-index="1"
+                data-rarity="genesis"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-02.jpg" alt="ARC ORIGIN #002">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#002</span>
+                        <span class="rarity">Genesis</span>
+                    </div>
+
+                    <div class="nft-name">
+                        GENESIS
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 03 -->
+
+            <div
+                class="nft-card"
+                data-index="2"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-03.jpg" alt="ARC ORIGIN #003">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#003</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE WANDERER
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 04 -->
+
+            <div
+                class="nft-card"
+                data-index="3"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-04.jpg" alt="ARC ORIGIN #004">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#004</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE SENTINEL
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 05 -->
+
+            <div
+                class="nft-card"
+                data-index="4"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-05.jpg" alt="ARC ORIGIN #005">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#005</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE DRIFTER
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 06 -->
+
+            <div
+                class="nft-card"
+                data-index="5"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-06.jpg" alt="ARC ORIGIN #006">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#006</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE SEEKER
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 07 -->
+
+            <div
+                class="nft-card"
+                data-index="6"
+                data-rarity="legendary"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-07.jpg" alt="ARC ORIGIN #007">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#007</span>
+                        <span class="rarity">Legendary</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE ASCENDED
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 08 -->
+
+            <div
+                class="nft-card"
+                data-index="7"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-08.jpg" alt="ARC ORIGIN #008">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#008</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE OUTCAST
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 09 -->
+
+            <div
+                class="nft-card"
+                data-index="8"
+                data-rarity="rare"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-09.jpg" alt="ARC ORIGIN #009">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#009</span>
+                        <span class="rarity">Rare</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE ARCHITECT
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NFT 10 -->
+
+            <div
+                class="nft-card"
+                data-index="9"
+                data-rarity="legendary"
+            >
+
+                <div class="nft-image">
+                    <img src="images/nft-10.jpg" alt="ARC ORIGIN #010">
+                </div>
+
+                <div class="nft-info">
+
+                    <div class="nft-top">
+                        <span class="nft-number">#010</span>
+                        <span class="rarity">Legendary</span>
+                    </div>
+
+                    <div class="nft-name">
+                        THE FINAL ARC
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ROADMAP
+========================= -->
+
+<section class="roadmap" id="roadmap">
+
+    <div class="container">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                THE FUTURE
+            </div>
+
+            <h2 class="section-title">
+                ROADMAP
+            </h2>
+
+            <p class="section-text">
+                ARC ORIGIN starts with the collection.
+                What comes next is built with the community.
+            </p>
+
+        </div>
+
+
+        <div class="roadmap-grid reveal">
+
+            <div class="roadmap-card">
+
+                <div class="roadmap-number">01 / GENESIS</div>
+
+                <h3>THE BEGINNING</h3>
+
+                <p>
+                    Collection launch, community building
+                    and the beginning of the ARC ecosystem.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-card">
+
+                <div class="roadmap-number">02 / HOLDERS</div>
+
+                <h3>THE COMMUNITY</h3>
+
+                <p>
+                    Future holder-focused benefits,
+                    potential airdrops, exclusive perks
+                    and early access.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-card">
+
+                <div class="roadmap-number">03 / UTILITY</div>
+
+                <h3>MORE TO COME</h3>
+
+                <p>
+                    More utility, community events,
+                    collaborations and new ways for
+                    the collection to evolve.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-card">
+
+                <div class="roadmap-number">04 / EXPANSION</div>
+
+                <h3>BEYOND THE ARC</h3>
+
+                <p>
+                    New collections, collaborations,
+                    ecosystem expansion and surprises.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="faq" id="faq">
+
+    <div class="container">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                QUESTIONS
+            </div>
+
+            <h2 class="section-title">
+                FAQ
+            </h2>
+
+        </div>
+
+
+        <div class="faq-grid reveal">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>
+                        What is ARC ORIGIN?
+                    </span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        ARC ORIGIN is a digital collection
+                        built around identity, rarity and
+                        an expanding fictional universe.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>
+                        How many NFTs are there?
+                    </span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        The current ARC ORIGIN collection
+                        showcases 10 unique characters.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>
+                        Will holders get future benefits?
+                    </span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Future plans may include potential
+                        airdrops, exclusive access, community
+                        perks and additional utility.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>
+                        Where can I follow ARC?
+                    </span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Follow the ARC ORIGIN community on X
+                        for announcements and future updates.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMMUNITY
+========================= -->
+
+<section class="community">
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            JOIN THE COMMUNITY
+        </div>
+
+        <h2 class="section-title">
+            FOLLOW<br>THE ARC.
+        </h2>
+
+        <p class="section-text">
+            Stay connected with ARC ORIGIN.
+            The next chapter starts with the community.
+        </p>
+
+        <a
+            href="https://x.com/saiffbtx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary community-btn"
+        >
+            FOLLOW @SAIFFBTX
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            © 2026 ARC ORIGIN
+        </div>
+
+        <div class="footer-links">
+
+            <a
+                href="https://x.com/saiffbtx"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                X / @SAIFFBTX
+            </a>
+
+            <a href="#home">
+                BACK TO TOP ↑
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NFT DATA
+========================= */
+
+const nfts = [
+    "images/nft-01.jpg",
+    "images/nft-02.jpg",
+    "images/nft-03.jpg",
+    "images/nft-04.jpg",
+    "images/nft-05.jpg",
+    "images/nft-06.jpg",
+    "images/nft-07.jpg",
+    "images/nft-08.jpg",
+    "images/nft-09.jpg",
+    "images/nft-10.jpg"
+];
+
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+const heroNFT = document.getElementById("heroNFT");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const sliderDots = document.getElementById("sliderDots");
+
+let currentIndex = 0;
+let isAnimating = false;
+let autoSlide = null;
+
+
+/* Create dots */
+
+nfts.forEach((_, index) => {
+
+    const dot = document.createElement("span");
+
+    dot.className = "dot";
+
+    if(index === 0){
+        dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+        changeNFT(index);
+    });
+
+    sliderDots.appendChild(dot);
+
+});
+
+
+const dots = document.querySelectorAll(".dot");
+
+
+function updateDots(){
+
+    dots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+            "active",
+            index === currentIndex
+        );
+
+    });
+
+}
+
+
+/* Premium subtle NFT change */
+
+function changeNFT(newIndex){
+
+    if(isAnimating || newIndex === currentIndex){
+        return;
+    }
+
+    isAnimating = true;
+
+    heroNFT.classList.remove("entering");
+
+    /*
+        Very short exit.
+        No crossfade.
+        Just a tiny scale/brightness movement.
+    */
+
+    heroNFT.classList.add("switching");
+
+
+    setTimeout(() => {
+
+        currentIndex = newIndex;
+
+        heroNFT.src = nfts[currentIndex];
+
+        heroNFT.classList.remove("switching");
+
+        /*
+            Force browser to restart animation
+        */
+
+        void heroNFT.offsetWidth;
+
+        heroNFT.classList.add("entering");
+
+        updateDots();
+
+
+        setTimeout(() => {
+
+            heroNFT.classList.remove("entering");
+
+            isAnimating = false;
+
+        }, 340);
+
+    }, 180);
+
+}
+
+
+/* Next */
+
+function nextNFT(){
+
+    const nextIndex =
+        (currentIndex + 1) % nfts.length;
+
+    changeNFT(nextIndex);
+}
+
+
+/* Previous */
+
+function previousNFT(){
+
+    const previousIndex =
+        (currentIndex - 1 + nfts.length) % nfts.length;
+
+    changeNFT(previousIndex);
+}
+
+
+nextBtn.addEventListener(
+    "click",
+    nextNFT
+);
+
+prevBtn.addEventListener(
+    "click",
+    previousNFT
+);
+
+
+/* =========================
+   AUTO SLIDER
+========================= */
+
+function startAutoSlide(){
+
+    clearInterval(autoSlide);
+
+    autoSlide = setInterval(() => {
+
+        if(!isAnimating){
+            nextNFT();
+        }
+
+    }, 2800);
+
+}
+
+
+function stopAutoSlide(){
+
+    clearInterval(autoSlide);
+
+}
+
+
+const artWrapper =
+    document.querySelector(".art-wrapper");
+
+
+artWrapper.addEventListener(
+    "mouseenter",
+    stopAutoSlide
+);
+
+artWrapper.addEventListener(
+    "mouseleave",
+    startAutoSlide
+);
+
+
+startAutoSlide();
+
+
+/* =========================
+   COLLECTION CARD CLICK
+========================= */
+
+const nftCards =
+    document.querySelectorAll(".nft-card");
+
+
+nftCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const index =
+            Number(card.dataset.index);
+
+        changeNFT(index);
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    });
+
+});
+
+
+/* =========================
+   FILTERS
+========================= */
+
+const filters =
+    document.querySelectorAll(".filter");
+
+
+filters.forEach(filter => {
+
+    filter.addEventListener("click", () => {
+
+        filters.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        filter.classList.add("active");
+
+        const selected =
+            filter.dataset.filter;
+
+
+        nftCards.forEach(card => {
+
+            const rarity =
+                card.dataset.rarity;
+
+            if(
+                selected === "all" ||
+                rarity === selected
+            ){
+
+                card.classList.remove("hidden");
+
+            }else{
+
+                card.classList.add("hidden");
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =========================
+   FAQ
+========================= */
+
+const faqItems =
+    document.querySelectorAll(".faq-item");
+
+
+faqItems.forEach(item => {
+
+    const question =
+        item.querySelector(".faq-question");
+
+    const answer =
+        item.querySelector(".faq-answer");
+
+
+    question.addEventListener("click", () => {
+
+        const alreadyOpen =
+            item.classList.contains("open");
+
+
+        faqItems.forEach(other => {
+
+            other.classList.remove("open");
+
+            other.querySelector(
+                ".faq-answer"
+            ).style.maxHeight = null;
+
+        });
+
+
+        if(!alreadyOpen){
+
+            item.classList.add("open");
+
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
+
+        }
+
+    });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================
+   PRELOAD ALL NFT IMAGES
+========================= */
+
+nfts.forEach(src => {
+
+    const image =
+        new Image();
+
+    image.src = src;
+
+});
+
+</script>
+
+</body>
+</html>
