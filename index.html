@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ARC ORIGIN — Digital Collection</title>
 
-<meta name="description" content="ARC ORIGIN — A digital collection built around identity, rarity and evolution.">
+<meta
+    name="description"
+    content="ARC ORIGIN — A digital collection built around identity, rarity and evolution."
+>
 
 <style>
 
@@ -124,7 +128,7 @@ NAVBAR
 .nav-links{
     display:flex;
     align-items:center;
-    gap:22px;
+    gap:30px;
 }
 
 .nav-links a{
@@ -143,12 +147,6 @@ NAVBAR
     border:1px solid var(--border);
     padding:11px 15px;
     border-radius:4px;
-}
-
-.wl-nav{
-    color:#08090c !important;
-    background:var(--accent);
-    border-color:var(--accent);
 }
 
 
@@ -457,6 +455,52 @@ SLIDER
 
 
 /* =========================
+WHITELIST HERO BUTTON
+========================= */
+
+.hero-wl{
+    margin-top:18px;
+}
+
+.wl-main-button{
+    width:100%;
+    max-width:500px;
+
+    min-height:62px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:transparent;
+
+    border:1px solid rgba(184,255,69,.35);
+
+    color:var(--accent);
+
+    font-size:13px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.wl-main-button:hover{
+    background:var(--accent);
+    color:#08090c;
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+
+/* =========================
 COLLECTION
 ========================= */
 
@@ -606,143 +650,151 @@ COLLECTION
 
 
 /* =========================
-WL SECTION
+WHITELIST
 ========================= */
 
-.wl-section{
+.whitelist{
+    background:#090a0d;
+
     border-top:1px solid rgba(255,255,255,.05);
-    background:#090a0e;
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    position:relative;
+    overflow:hidden;
 }
 
-.wl-header{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:40px;
-    margin-bottom:45px;
+.whitelist::before{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:radial-gradient(
+        circle,
+        rgba(184,255,69,.045),
+        transparent 65%
+    );
+
+    pointer-events:none;
 }
 
-.wl-status{
-    border:1px solid rgba(184,255,69,.18);
-    background:rgba(184,255,69,.035);
-    padding:16px 20px;
-    min-width:180px;
+.wl-container{
+    position:relative;
+    z-index:2;
 }
 
-.wl-status-label{
-    color:#737781;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:2px;
+.wl-heading{
+    text-align:center;
 }
 
-.wl-status-value{
-    color:var(--accent);
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:1px;
-    margin-top:7px;
+.wl-heading .section-text{
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .wl-box{
-    max-width:850px;
+    width:min(760px,100%);
+    margin:55px auto 0;
+
     border:1px solid var(--border);
-    background:#0d0f14;
+
+    background:rgba(255,255,255,.018);
+
     padding:30px;
-}
-
-.wl-box-title{
-    font-size:17px;
-    font-weight:900;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.wl-box-subtitle{
-    color:#777b85;
-    font-size:12px;
-    line-height:1.7;
-    margin-top:10px;
-    max-width:650px;
-}
-
-.wl-tasks{
-    display:grid;
-    gap:10px;
-    margin-top:28px;
 }
 
 .wl-task{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
 
-    padding:16px;
+    gap:20px;
 
-    border:1px solid rgba(255,255,255,.07);
-    background:rgba(255,255,255,.018);
+    padding:20px 0;
 
-    transition:
-        border-color .2s ease,
-        background .2s ease;
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
-.wl-task:hover{
-    border-color:rgba(255,255,255,.15);
-    background:rgba(255,255,255,.03);
+.wl-task:last-of-type{
+    border-bottom:0;
 }
 
 .wl-task-left{
     display:flex;
     align-items:center;
-    gap:14px;
+
+    gap:15px;
+
     min-width:0;
 }
 
-.wl-task-number{
-    width:32px;
-    height:32px;
+.wl-check{
+    width:30px;
+    height:30px;
+
+    flex-shrink:0;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.15);
 
-    color:#777b84;
-    font-size:10px;
+    color:#777;
+
+    font-size:13px;
     font-weight:900;
-
-    flex-shrink:0;
 }
 
-.wl-task-text{
-    min-width:0;
+.wl-task.completed .wl-check{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#08090c;
 }
 
 .wl-task-title{
     font-size:12px;
     font-weight:800;
-    letter-spacing:.7px;
+
+    letter-spacing:1px;
+
+    color:#f0f0f0;
 }
 
-.wl-task-description{
-    color:#686c76;
+.wl-task-sub{
+    color:#747984;
+
     font-size:10px;
+
     margin-top:5px;
 }
 
 .wl-task-btn{
-    min-width:92px;
-    height:36px;
+    flex-shrink:0;
 
-    border:1px solid rgba(255,255,255,.12);
-    background:#111319;
+    min-width:120px;
+
+    min-height:42px;
+
+    padding:0 15px;
+
+    border:1px solid rgba(255,255,255,.14);
+
+    background:rgba(255,255,255,.025);
+
     color:white;
 
     font-size:9px;
+
     font-weight:900;
+
     letter-spacing:1px;
 
     cursor:pointer;
@@ -750,67 +802,74 @@ WL SECTION
     transition:
         background .2s ease,
         border-color .2s ease,
-        color .2s ease,
-        transform .2s ease;
-
-    flex-shrink:0;
+        color .2s ease;
 }
 
 .wl-task-btn:hover{
-    border-color:rgba(184,255,69,.4);
-    transform:translateY(-1px);
+    border-color:var(--accent);
+    color:var(--accent);
 }
 
-.wl-task.completed{
-    border-color:rgba(184,255,69,.16);
-}
-
-.wl-task.completed .wl-task-number{
+.wl-task-btn.done{
     background:var(--accent);
     border-color:var(--accent);
     color:#08090c;
-}
-
-.wl-task.completed .wl-task-btn{
-    background:rgba(184,255,69,.1);
-    color:var(--accent);
-    border-color:rgba(184,255,69,.3);
     cursor:default;
 }
 
-.wl-submit{
-    margin-top:25px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.07);
+.wl-submit-box{
+    display:none;
+
+    margin-top:30px;
+
+    padding-top:30px;
+
+    border-top:1px solid rgba(255,255,255,.08);
 }
 
-.wl-submit.locked{
-    opacity:.45;
-}
-
-.wl-submit-label{
+.wl-submit-box.unlocked{
     display:block;
-    font-size:10px;
+}
+
+.wl-submit-title{
+    font-size:18px;
     font-weight:900;
-    letter-spacing:1.5px;
-    margin-bottom:9px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
 }
 
-.wl-input-row{
+.wl-submit-text{
+    color:#7d818b;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    margin-top:8px;
+}
+
+.wl-submit-row{
     display:flex;
+
     gap:10px;
+
+    margin-top:18px;
 }
 
-.wl-input{
+.wl-submit-row input{
     flex:1;
+
     min-width:0;
 
-    height:48px;
+    height:50px;
 
     padding:0 15px;
 
     background:#08090c;
-    border:1px solid rgba(255,255,255,.1);
+
+    border:1px solid rgba(255,255,255,.12);
 
     color:white;
 
@@ -819,25 +878,28 @@ WL SECTION
     font-size:12px;
 }
 
-.wl-input:focus{
+.wl-submit-row input:focus{
     border-color:rgba(184,255,69,.5);
 }
 
-.wl-input::placeholder{
-    color:#555962;
+.wl-submit-row input::placeholder{
+    color:#5e626b;
 }
 
 .wl-submit-btn{
-    min-width:120px;
-    height:48px;
+    min-width:150px;
 
     border:1px solid var(--accent);
+
     background:var(--accent);
+
     color:#08090c;
 
     font-size:10px;
+
     font-weight:900;
-    letter-spacing:1.3px;
+
+    letter-spacing:1px;
 
     cursor:pointer;
 
@@ -848,36 +910,40 @@ WL SECTION
 
 .wl-submit-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(184,255,69,.1);
+
+    box-shadow:0 8px 20px rgba(184,255,69,.10);
 }
 
 .wl-submit-btn:disabled{
-    opacity:.45;
-    cursor:not-allowed;
+    cursor:default;
+    opacity:.7;
     transform:none;
-    box-shadow:none;
 }
 
-.wl-message{
-    min-height:20px;
-    margin-top:12px;
+.wl-success{
+    display:none;
 
-    color:#777b85;
+    margin-top:18px;
 
-    font-size:10px;
-    line-height:1.6;
-}
+    padding:16px;
 
-.wl-message.success{
+    border:1px solid rgba(184,255,69,.25);
+
+    background:rgba(184,255,69,.04);
+
     color:var(--accent);
+
+    text-align:center;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
 }
 
-.wl-note{
-    margin-top:22px;
-
-    color:#555962;
-    font-size:9px;
-    line-height:1.6;
+.wl-success.show{
+    display:block;
 }
 
 
@@ -1156,11 +1222,6 @@ RESPONSIVE
     .roadmap-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
-    .wl-header{
-        align-items:flex-start;
-        flex-direction:column;
-    }
 }
 
 @media(max-width:700px){
@@ -1176,20 +1237,8 @@ RESPONSIVE
         background:rgba(8,9,12,.97);
     }
 
-    .nav-links{
-        gap:7px;
-    }
-
-    .nav-links a:not(.x-link):not(.wl-nav){
+    .nav-links a:not(.x-link){
         display:none;
-    }
-
-    .x-link{
-        padding:10px 11px;
-    }
-
-    .wl-nav{
-        padding:10px 11px !important;
     }
 
     .nav-inner{
@@ -1241,23 +1290,19 @@ RESPONSIVE
     }
 
     .wl-task{
-        padding:13px;
-    }
-
-    .wl-task-description{
-        display:none;
+        align-items:flex-start;
     }
 
     .wl-task-btn{
-        min-width:80px;
+        min-width:95px;
     }
 
-    .wl-input-row{
+    .wl-submit-row{
         flex-direction:column;
     }
 
     .wl-submit-btn{
-        width:100%;
+        min-height:50px;
     }
 
     .footer-inner{
@@ -1293,13 +1338,13 @@ RESPONSIVE
         font-size:11px;
     }
 
-    .wl-task-title{
-        font-size:10px;
+    .wl-task{
+        flex-direction:column;
+        gap:14px;
     }
 
     .wl-task-btn{
-        min-width:74px;
-        font-size:8px;
+        width:100%;
     }
 }
 
@@ -1326,6 +1371,7 @@ REDUCE MOTION
 </style>
 </head>
 
+
 <body>
 
 
@@ -1349,10 +1395,6 @@ NAVBAR
 
             <a href="#collection">
                 COLLECTION
-            </a>
-
-            <a href="#wl" class="wl-nav">
-                WL
             </a>
 
             <a href="#roadmap">
@@ -1428,6 +1470,19 @@ HERO
 
                 </div>
 
+                <!-- BIG WHITELIST BUTTON -->
+
+                <div class="hero-wl">
+
+                    <a
+                        href="#whitelist"
+                        class="wl-main-button"
+                    >
+                        ENTER WHITELIST →
+                    </a>
+
+                </div>
+
             </div>
 
 
@@ -1454,6 +1509,7 @@ HERO
                         <div class="slider-arrows">
 
                             <button
+                                type="button"
                                 class="slider-arrow"
                                 id="prevBtn"
                                 aria-label="Previous NFT"
@@ -1462,6 +1518,7 @@ HERO
                             </button>
 
                             <button
+                                type="button"
                                 class="slider-arrow"
                                 id="nextBtn"
                                 aria-label="Next NFT"
@@ -1525,6 +1582,7 @@ COLLECTION
             <div class="filters">
 
                 <button
+                    type="button"
                     class="filter active"
                     data-filter="all"
                 >
@@ -1532,6 +1590,7 @@ COLLECTION
                 </button>
 
                 <button
+                    type="button"
                     class="filter"
                     data-filter="genesis"
                 >
@@ -1539,6 +1598,7 @@ COLLECTION
                 </button>
 
                 <button
+                    type="button"
                     class="filter"
                     data-filter="rare"
                 >
@@ -1546,6 +1606,7 @@ COLLECTION
                 </button>
 
                 <button
+                    type="button"
                     class="filter"
                     data-filter="legendary"
                 >
@@ -1988,252 +2049,229 @@ COLLECTION
 
 
 <!-- =========================
-WL
+WHITELIST
 ========================= -->
 
 <section
-    class="wl-section"
-    id="wl"
+    class="whitelist"
+    id="whitelist"
 >
 
-    <div class="container">
+    <div class="container wl-container">
 
-        <div class="wl-header reveal">
 
-            <div>
+        <div class="wl-heading reveal">
 
-                <div class="section-label">
-                    EARLY ACCESS
-                </div>
-
-                <h2 class="section-title">
-                    WHITELIST
-                </h2>
-
-                <p class="section-text">
-                    Complete the tasks below to enter the ARC ORIGIN
-                    whitelist.
-                </p>
-
+            <div class="section-label">
+                EARLY ACCESS
             </div>
 
-            <div class="wl-status">
+            <h2 class="section-title">
+                ENTER<br>WHITELIST
+            </h2>
 
-                <div class="wl-status-label">
-                    YOUR PROGRESS
-                </div>
-
-                <div
-                    class="wl-status-value"
-                    id="wlProgress"
-                >
-                    0 / 5 COMPLETE
-                </div>
-
-            </div>
+            <p class="section-text">
+                Complete the tasks below to register your entry
+                for the ARC ORIGIN whitelist.
+            </p>
 
         </div>
 
 
         <div class="wl-box reveal">
 
-            <div class="wl-box-title">
-                COMPLETE TO ENTER
+
+            <!-- FOLLOW -->
+
+            <div
+                class="wl-task"
+                data-task="follow"
+            >
+
+                <div class="wl-task-left">
+
+                    <div class="wl-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <div class="wl-task-title">
+                            FOLLOW @ARCORIGINFUN
+                        </div>
+
+                        <div class="wl-task-sub">
+                            Follow ARC ORIGIN on X.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="wl-task-btn"
+                    data-url="https://x.com/ArcOriginfun"
+                >
+                    COMPLETE ↗
+                </button>
+
             </div>
 
-            <div class="wl-box-subtitle">
-                Open each task, complete the action on X,
-                then return here and mark it as completed.
+
+            <!-- LIKE -->
+
+            <div
+                class="wl-task"
+                data-task="like"
+            >
+
+                <div class="wl-task-left">
+
+                    <div class="wl-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <div class="wl-task-title">
+                            LIKE THE POST
+                        </div>
+
+                        <div class="wl-task-sub">
+                            Like the official ARC ORIGIN post.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="wl-task-btn"
+                    data-url="https://x.com/ArcOriginfun/status/2100661258416771509?s=20"
+                >
+                    COMPLETE ↗
+                </button>
+
             </div>
 
 
-            <div class="wl-tasks">
+            <!-- REPOST -->
 
+            <div
+                class="wl-task"
+                data-task="repost"
+            >
 
-                <!-- TASK 01 -->
+                <div class="wl-task-left">
 
-                <div
-                    class="wl-task"
-                    data-task="follow"
-                >
+                    <div class="wl-check">
+                        ✓
+                    </div>
 
-                    <div class="wl-task-left">
+                    <div>
 
-                        <div class="wl-task-number">
-                            01
+                        <div class="wl-task-title">
+                            REPOST THE POST
                         </div>
 
-                        <div class="wl-task-text">
-
-                            <div class="wl-task-title">
-                                FOLLOW @ARCORIGINFUN
-                            </div>
-
-                            <div class="wl-task-description">
-                                Follow the official ARC ORIGIN account on X.
-                            </div>
-
+                        <div class="wl-task-sub">
+                            Repost the official ARC ORIGIN post.
                         </div>
 
                     </div>
 
-                    <button
-                        class="wl-task-btn"
-                        data-url="https://x.com/ArcOriginfun"
-                    >
-                        COMPLETE ↗
-                    </button>
-
                 </div>
 
 
-                <!-- TASK 02 -->
-
-                <div
-                    class="wl-task"
-                    data-task="like"
+                <button
+                    type="button"
+                    class="wl-task-btn"
+                    data-url="https://x.com/ArcOriginfun/status/2100661258416771509?s=20"
                 >
+                    COMPLETE ↗
+                </button>
 
-                    <div class="wl-task-left">
+            </div>
 
-                        <div class="wl-task-number">
-                            02
+
+            <!-- COMMENT -->
+
+            <div
+                class="wl-task"
+                data-task="comment"
+            >
+
+                <div class="wl-task-left">
+
+                    <div class="wl-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <div class="wl-task-title">
+                            COMMENT ON THE POST
                         </div>
 
-                        <div class="wl-task-text">
-
-                            <div class="wl-task-title">
-                                LIKE THE WL POST
-                            </div>
-
-                            <div class="wl-task-description">
-                                Like the official whitelist announcement.
-                            </div>
-
+                        <div class="wl-task-sub">
+                            Leave a comment on the official post.
                         </div>
 
                     </div>
 
-                    <button
-                        class="wl-task-btn"
-                        data-url="PASTE_LIKE_POST_URL_HERE"
-                    >
-                        COMPLETE ↗
-                    </button>
-
                 </div>
 
 
-                <!-- TASK 03 -->
-
-                <div
-                    class="wl-task"
-                    data-task="repost"
+                <button
+                    type="button"
+                    class="wl-task-btn"
+                    data-url="https://x.com/ArcOriginfun/status/2100661258416771509?s=20"
                 >
+                    COMPLETE ↗
+                </button>
 
-                    <div class="wl-task-left">
+            </div>
 
-                        <div class="wl-task-number">
-                            03
+
+            <!-- TAG -->
+
+            <div
+                class="wl-task"
+                data-task="tag"
+            >
+
+                <div class="wl-task-left">
+
+                    <div class="wl-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <div class="wl-task-title">
+                            TAG 2 PEOPLE
                         </div>
 
-                        <div class="wl-task-text">
-
-                            <div class="wl-task-title">
-                                REPOST THE WL POST
-                            </div>
-
-                            <div class="wl-task-description">
-                                Repost the official whitelist announcement.
-                            </div>
-
+                        <div class="wl-task-sub">
+                            Tag 2 people in your comment.
                         </div>
 
                     </div>
 
-                    <button
-                        class="wl-task-btn"
-                        data-url="PASTE_REPOST_POST_URL_HERE"
-                    >
-                        COMPLETE ↗
-                    </button>
-
                 </div>
 
 
-                <!-- TASK 04 -->
-
-                <div
-                    class="wl-task"
-                    data-task="comment"
+                <button
+                    type="button"
+                    class="wl-task-btn"
+                    data-url="https://x.com/ArcOriginfun/status/2100661258416771509?s=20"
                 >
-
-                    <div class="wl-task-left">
-
-                        <div class="wl-task-number">
-                            04
-                        </div>
-
-                        <div class="wl-task-text">
-
-                            <div class="wl-task-title">
-                                COMMENT ON THE POST
-                            </div>
-
-                            <div class="wl-task-description">
-                                Leave a genuine comment on the WL post.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <button
-                        class="wl-task-btn"
-                        data-url="PASTE_COMMENT_POST_URL_HERE"
-                    >
-                        COMPLETE ↗
-                    </button>
-
-                </div>
-
-
-                <!-- TASK 05 -->
-
-                <div
-                    class="wl-task"
-                    data-task="tag"
-                >
-
-                    <div class="wl-task-left">
-
-                        <div class="wl-task-number">
-                            05
-                        </div>
-
-                        <div class="wl-task-text">
-
-                            <div class="wl-task-title">
-                                TAG 2 PEOPLE
-                            </div>
-
-                            <div class="wl-task-description">
-                                Tag two people in your comment on the WL post.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <button
-                        class="wl-task-btn"
-                        data-url="PASTE_COMMENT_POST_URL_HERE"
-                    >
-                        COMPLETE ↗
-                    </button>
-
-                </div>
-
+                    COMPLETE ↗
+                </button>
 
             </div>
 
@@ -2241,54 +2279,48 @@ WL
             <!-- SUBMIT -->
 
             <div
-                class="wl-submit locked"
-                id="wlSubmit"
+                class="wl-submit-box"
+                id="wlSubmitBox"
             >
 
-                <label
-                    class="wl-submit-label"
-                    for="wlUsername"
-                >
-                    X USERNAME / ENTRY ID
-                </label>
+                <div class="wl-submit-title">
+                    ALL TASKS COMPLETE
+                </div>
 
-                <div class="wl-input-row">
+                <div class="wl-submit-text">
+                    Enter your X username or entry ID to submit your whitelist entry.
+                </div>
+
+
+                <div class="wl-submit-row">
 
                     <input
                         type="text"
                         id="wlUsername"
-                        class="wl-input"
                         placeholder="@yourusername"
-                        maxlength="50"
                         autocomplete="off"
-                        disabled
                     >
 
                     <button
                         type="button"
                         class="wl-submit-btn"
                         id="wlSubmitBtn"
-                        disabled
                     >
                         SUBMIT ENTRY
                     </button>
 
                 </div>
 
+
                 <div
-                    class="wl-message"
-                    id="wlMessage"
+                    class="wl-success"
+                    id="wlSuccess"
                 >
-                    Complete all 5 tasks to unlock your entry.
+                    YOU HAVE BEEN REGISTERED FOR THE WL ✓
                 </div>
 
             </div>
 
-
-            <div class="wl-note">
-                NOTE: This checklist records completion in your browser.
-                It does not independently verify actions on X.
-            </div>
 
         </div>
 
@@ -2442,8 +2474,8 @@ FAQ
             <div class="faq-item">
 
                 <button
-                    class="faq-question"
                     type="button"
+                    class="faq-question"
                 >
 
                     <span>
@@ -2472,8 +2504,8 @@ FAQ
             <div class="faq-item">
 
                 <button
-                    class="faq-question"
                     type="button"
+                    class="faq-question"
                 >
 
                     <span>
@@ -2501,8 +2533,8 @@ FAQ
             <div class="faq-item">
 
                 <button
-                    class="faq-question"
                     type="button"
+                    class="faq-question"
                 >
 
                     <span>
@@ -2531,8 +2563,8 @@ FAQ
             <div class="faq-item">
 
                 <button
-                    class="faq-question"
                     type="button"
+                    class="faq-question"
                 >
 
                     <span>
@@ -2705,6 +2737,7 @@ nfts.forEach((_,index) => {
 
 });
 
+
 const dots =
     document.querySelectorAll(".dot");
 
@@ -2778,7 +2811,6 @@ function changeNFT(newIndex){
             isAnimating = false;
 
         },330);
-
 
     },180);
 
@@ -2863,12 +2895,10 @@ artWrapper.addEventListener(
     stopAutoSlide
 );
 
-
 artWrapper.addEventListener(
     "mouseleave",
     startAutoSlide
 );
-
 
 startAutoSlide();
 
@@ -2929,7 +2959,6 @@ filters.forEach(filter => {
                 );
 
             });
-
 
             filter.classList.add(
                 "active"
@@ -3037,276 +3066,6 @@ faqItems.forEach(item => {
 
 
 /* =========================
-WL SYSTEM
-========================= */
-
-const wlTasks =
-    document.querySelectorAll(".wl-task");
-
-const wlProgress =
-    document.getElementById("wlProgress");
-
-const wlSubmit =
-    document.getElementById("wlSubmit");
-
-const wlUsername =
-    document.getElementById("wlUsername");
-
-const wlSubmitBtn =
-    document.getElementById("wlSubmitBtn");
-
-const wlMessage =
-    document.getElementById("wlMessage");
-
-
-const completedTasks =
-    new Set(
-        JSON.parse(
-            localStorage.getItem(
-                "arcOriginWLTasks"
-            ) || "[]"
-        )
-    );
-
-
-/* =========================
-UPDATE WL UI
-========================= */
-
-function updateWL(){
-
-    wlTasks.forEach(task => {
-
-        const taskName =
-            task.dataset.task;
-
-        const button =
-            task.querySelector(
-                ".wl-task-btn"
-            );
-
-        const number =
-            task.querySelector(
-                ".wl-task-number"
-            );
-
-
-        if(completedTasks.has(taskName)){
-
-            task.classList.add(
-                "completed"
-            );
-
-            button.textContent =
-                "DONE ✓";
-
-            number.textContent =
-                "✓";
-
-            button.disabled = true;
-
-        }
-        else{
-
-            task.classList.remove(
-                "completed"
-            );
-
-            button.textContent =
-                "COMPLETE ↗";
-
-            number.textContent =
-                taskName === "follow" ? "01" :
-                taskName === "like" ? "02" :
-                taskName === "repost" ? "03" :
-                taskName === "comment" ? "04" :
-                "05";
-
-            button.disabled = false;
-
-        }
-
-    });
-
-
-    const completedCount =
-        completedTasks.size;
-
-
-    wlProgress.textContent =
-        completedCount + " / 5 COMPLETE";
-
-
-    if(completedCount === 5){
-
-        wlSubmit.classList.remove(
-            "locked"
-        );
-
-        wlUsername.disabled = false;
-
-        wlSubmitBtn.disabled = false;
-
-        wlMessage.textContent =
-            "All tasks complete. Enter your X username to submit.";
-
-        wlMessage.classList.add(
-            "success"
-        );
-
-    }
-    else{
-
-        wlSubmit.classList.add(
-            "locked"
-        );
-
-        wlUsername.disabled = true;
-
-        wlSubmitBtn.disabled = true;
-
-        wlMessage.textContent =
-            "Complete all 5 tasks to unlock your entry.";
-
-        wlMessage.classList.remove(
-            "success"
-        );
-
-    }
-
-}
-
-
-/* =========================
-WL TASK CLICK
-========================= */
-
-wlTasks.forEach(task => {
-
-    const button =
-        task.querySelector(
-            ".wl-task-btn"
-        );
-
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            const taskName =
-                task.dataset.task;
-
-            const url =
-                button.dataset.url;
-
-
-            if(
-                completedTasks.has(
-                    taskName
-                )
-            ){
-
-                return;
-
-            }
-
-
-            /*
-            Open the X destination first.
-            Then mark the task as completed
-            when the user returns/clicks again.
-            */
-
-            if(
-                url &&
-                !url.includes(
-                    "PASTE_"
-                )
-            ){
-
-                window.open(
-                    url,
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-
-            }
-
-
-            completedTasks.add(
-                taskName
-            );
-
-
-            localStorage.setItem(
-                "arcOriginWLTasks",
-                JSON.stringify(
-                    [...completedTasks]
-                )
-            );
-
-
-            updateWL();
-
-        }
-    );
-
-});
-
-
-/* =========================
-WL SUBMIT
-========================= */
-
-wlSubmitBtn.addEventListener(
-    "click",
-    () => {
-
-        const username =
-            wlUsername.value.trim();
-
-
-        if(username.length < 2){
-
-            wlMessage.textContent =
-                "Please enter your X username.";
-
-            wlMessage.classList.remove(
-                "success"
-            );
-
-            return;
-
-        }
-
-
-        wlMessage.textContent =
-            "Entry recorded locally for " +
-            username +
-            ". You can now wait for the WL announcement.";
-
-        wlMessage.classList.add(
-            "success"
-        );
-
-
-        wlSubmitBtn.textContent =
-            "SUBMITTED ✓";
-
-        wlSubmitBtn.disabled = true;
-
-    }
-);
-
-
-/* =========================
-WL INITIALIZE
-========================= */
-
-updateWL();
-
-
-/* =========================
 SCROLL REVEAL
 ========================= */
 
@@ -3390,6 +3149,209 @@ else{
 
 }
 
+
+/* =========================
+WHITELIST TASK SYSTEM
+========================= */
+
+const wlTasks = document.querySelectorAll(".wl-task");
+const wlSubmitBox = document.getElementById("wlSubmitBox");
+const wlUsername = document.getElementById("wlUsername");
+const wlSubmitBtn = document.getElementById("wlSubmitBtn");
+const wlSuccess = document.getElementById("wlSuccess");
+
+let completedTasks = {};
+let openedTasks = {};
+
+try {
+    completedTasks = JSON.parse(
+        localStorage.getItem("arcOriginWLTasks") || "{}"
+    );
+} catch (error) {
+    completedTasks = {};
+}
+
+try {
+    openedTasks = JSON.parse(
+        localStorage.getItem("arcOriginWLOpened") || "{}"
+    );
+} catch (error) {
+    openedTasks = {};
+}
+
+function saveWLState() {
+    try {
+        localStorage.setItem(
+            "arcOriginWLTasks",
+            JSON.stringify(completedTasks)
+        );
+
+        localStorage.setItem(
+            "arcOriginWLOpened",
+            JSON.stringify(openedTasks)
+        );
+    } catch (error) {
+        /* Ignore storage errors */
+    }
+}
+
+function markTaskOpened(task, button) {
+    if (!button) return;
+
+    button.textContent = "COMPLETE ✓";
+    button.classList.add("ready");
+}
+
+function markTaskDone(task, button) {
+    task.classList.add("completed");
+
+    if (button) {
+        button.textContent = "DONE ✓";
+        button.classList.remove("ready");
+        button.classList.add("done");
+        button.disabled = true;
+    }
+
+    const check = task.querySelector(".wl-check");
+
+    if (check) {
+        check.textContent = "✓";
+    }
+}
+
+function checkAllTasks() {
+    const allDone = [...wlTasks].every(task => {
+        return completedTasks[task.dataset.task] === true;
+    });
+
+    if (allDone && wlSubmitBox) {
+        wlSubmitBox.classList.add("unlocked");
+    }
+}
+
+/* =========================
+LOAD SAVED WL STATE
+========================= */
+
+wlTasks.forEach(task => {
+    const taskName = task.dataset.task;
+    const button = task.querySelector(".wl-task-btn");
+
+    if (!button) return;
+
+    if (completedTasks[taskName] === true) {
+        markTaskDone(task, button);
+    } else if (openedTasks[taskName] === true) {
+        markTaskOpened(task, button);
+    } else {
+        button.textContent = "OPEN ↗";
+    }
+});
+
+/* =========================
+TASK BUTTONS
+========================= */
+
+wlTasks.forEach(task => {
+    const taskName = task.dataset.task;
+    const button = task.querySelector(".wl-task-btn");
+
+    if (!button) return;
+
+    button.addEventListener("click", function () {
+
+        if (completedTasks[taskName] === true) {
+            return;
+        }
+
+        const url = button.dataset.url;
+
+        /*
+        STEP 1:
+        Open the real X profile/post in a new tab.
+        The X action itself is performed on X.
+        */
+
+        if (!openedTasks[taskName]) {
+
+            if (url) {
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+            }
+
+            openedTasks[taskName] = true;
+            saveWLState();
+
+            markTaskOpened(task, button);
+
+            return;
+        }
+
+        /*
+        STEP 2:
+        After returning from X, clicking COMPLETE
+        marks the task as finished.
+        */
+
+        completedTasks[taskName] = true;
+        saveWLState();
+
+        markTaskDone(task, button);
+        checkAllTasks();
+    });
+});
+
+/* =========================
+SUBMIT WHITELIST ENTRY
+========================= */
+
+if (wlSubmitBtn) {
+
+    wlSubmitBtn.addEventListener("click", function () {
+
+        const username = wlUsername.value.trim();
+
+        if (!username) {
+            wlUsername.focus();
+            return;
+        }
+
+        let normalizedUsername = username;
+
+        if (!normalizedUsername.startsWith("@")) {
+            normalizedUsername = "@" + normalizedUsername;
+        }
+
+        try {
+            localStorage.setItem(
+                "arcOriginWLUsername",
+                normalizedUsername
+            );
+        } catch (error) {
+            /* Ignore storage errors */
+        }
+
+        wlSuccess.textContent =
+            "YOU HAVE BEEN REGISTERED FOR THE WL ✓";
+
+        wlSuccess.classList.add("show");
+
+        wlSubmitBtn.textContent = "REGISTERED ✓";
+        wlSubmitBtn.disabled = true;
+
+        wlUsername.value = normalizedUsername;
+        wlUsername.disabled = true;
+    });
+}
+
+/* =========================
+CHECK WL ON LOAD
+========================= */
+
+checkAllTasks();
 </script>
 
 </body>
