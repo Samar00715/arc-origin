@@ -11,7 +11,7 @@
 <style>
 
 /* =========================
-   GLOBAL
+GLOBAL
 ========================= */
 
 *{
@@ -81,7 +81,7 @@ section{
 
 
 /* =========================
-   NAVBAR
+NAVBAR
 ========================= */
 
 .navbar{
@@ -95,7 +95,6 @@ section{
 
     background:rgba(8,9,12,.94);
 
-    /* Reduced blur for better scrolling */
     backdrop-filter:blur(8px);
     -webkit-backdrop-filter:blur(8px);
 
@@ -125,7 +124,7 @@ section{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:22px;
 }
 
 .nav-links a{
@@ -146,9 +145,15 @@ section{
     border-radius:4px;
 }
 
+.wl-nav{
+    color:#08090c !important;
+    background:var(--accent);
+    border-color:var(--accent);
+}
+
 
 /* =========================
-   HERO
+HERO
 ========================= */
 
 .hero{
@@ -263,7 +268,7 @@ section{
 
 
 /* =========================
-   HERO NFT
+HERO NFT
 ========================= */
 
 .hero-art{
@@ -365,7 +370,6 @@ section{
         transform:scale(1);
         filter:brightness(1);
     }
-
 }
 
 .art-wrapper::after{
@@ -381,7 +385,7 @@ section{
 
 
 /* =========================
-   SLIDER
+SLIDER
 ========================= */
 
 .slider-controls{
@@ -453,7 +457,7 @@ section{
 
 
 /* =========================
-   COLLECTION
+COLLECTION
 ========================= */
 
 .collection{
@@ -602,7 +606,283 @@ section{
 
 
 /* =========================
-   ROADMAP
+WL SECTION
+========================= */
+
+.wl-section{
+    border-top:1px solid rgba(255,255,255,.05);
+    background:#090a0e;
+}
+
+.wl-header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:40px;
+    margin-bottom:45px;
+}
+
+.wl-status{
+    border:1px solid rgba(184,255,69,.18);
+    background:rgba(184,255,69,.035);
+    padding:16px 20px;
+    min-width:180px;
+}
+
+.wl-status-label{
+    color:#737781;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.wl-status-value{
+    color:var(--accent);
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-top:7px;
+}
+
+.wl-box{
+    max-width:850px;
+    border:1px solid var(--border);
+    background:#0d0f14;
+    padding:30px;
+}
+
+.wl-box-title{
+    font-size:17px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.wl-box-subtitle{
+    color:#777b85;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:10px;
+    max-width:650px;
+}
+
+.wl-tasks{
+    display:grid;
+    gap:10px;
+    margin-top:28px;
+}
+
+.wl-task{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:16px;
+
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.018);
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.wl-task:hover{
+    border-color:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.03);
+}
+
+.wl-task-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:0;
+}
+
+.wl-task-number{
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    color:#777b84;
+    font-size:10px;
+    font-weight:900;
+
+    flex-shrink:0;
+}
+
+.wl-task-text{
+    min-width:0;
+}
+
+.wl-task-title{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.7px;
+}
+
+.wl-task-description{
+    color:#686c76;
+    font-size:10px;
+    margin-top:5px;
+}
+
+.wl-task-btn{
+    min-width:92px;
+    height:36px;
+
+    border:1px solid rgba(255,255,255,.12);
+    background:#111319;
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+    flex-shrink:0;
+}
+
+.wl-task-btn:hover{
+    border-color:rgba(184,255,69,.4);
+    transform:translateY(-1px);
+}
+
+.wl-task.completed{
+    border-color:rgba(184,255,69,.16);
+}
+
+.wl-task.completed .wl-task-number{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#08090c;
+}
+
+.wl-task.completed .wl-task-btn{
+    background:rgba(184,255,69,.1);
+    color:var(--accent);
+    border-color:rgba(184,255,69,.3);
+    cursor:default;
+}
+
+.wl-submit{
+    margin-top:25px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.wl-submit.locked{
+    opacity:.45;
+}
+
+.wl-submit-label{
+    display:block;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:9px;
+}
+
+.wl-input-row{
+    display:flex;
+    gap:10px;
+}
+
+.wl-input{
+    flex:1;
+    min-width:0;
+
+    height:48px;
+
+    padding:0 15px;
+
+    background:#08090c;
+    border:1px solid rgba(255,255,255,.1);
+
+    color:white;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.wl-input:focus{
+    border-color:rgba(184,255,69,.5);
+}
+
+.wl-input::placeholder{
+    color:#555962;
+}
+
+.wl-submit-btn{
+    min-width:120px;
+    height:48px;
+
+    border:1px solid var(--accent);
+    background:var(--accent);
+    color:#08090c;
+
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.3px;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.wl-submit-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(184,255,69,.1);
+}
+
+.wl-submit-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+.wl-message{
+    min-height:20px;
+    margin-top:12px;
+
+    color:#777b85;
+
+    font-size:10px;
+    line-height:1.6;
+}
+
+.wl-message.success{
+    color:var(--accent);
+}
+
+.wl-note{
+    margin-top:22px;
+
+    color:#555962;
+    font-size:9px;
+    line-height:1.6;
+}
+
+
+/* =========================
+ROADMAP
 ========================= */
 
 .roadmap{
@@ -663,7 +943,7 @@ section{
 
 
 /* =========================
-   FAQ
+FAQ
 ========================= */
 
 .faq-grid{
@@ -742,7 +1022,7 @@ section{
 
 
 /* =========================
-   COMMUNITY
+COMMUNITY
 ========================= */
 
 .community{
@@ -788,7 +1068,7 @@ section{
 
 
 /* =========================
-   FOOTER
+FOOTER
 ========================= */
 
 footer{
@@ -829,13 +1109,8 @@ footer{
 
 
 /* =========================
-   REVEAL
+REVEAL
 ========================= */
-
-/*
-   Reduced movement and duration.
-   This is much lighter during scrolling.
-*/
 
 .reveal{
     opacity:0;
@@ -855,7 +1130,7 @@ footer{
 
 
 /* =========================
-   RESPONSIVE
+RESPONSIVE
 ========================= */
 
 @media(max-width:1000px){
@@ -882,19 +1157,17 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .wl-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
 }
-
 
 @media(max-width:700px){
 
     section{
         padding:80px 0;
     }
-
-    /*
-       Disable blur completely on small screens.
-       This can make a big difference on mobile.
-    */
 
     .navbar{
         backdrop-filter:none;
@@ -903,8 +1176,20 @@ footer{
         background:rgba(8,9,12,.97);
     }
 
-    .nav-links a:not(.x-link){
+    .nav-links{
+        gap:7px;
+    }
+
+    .nav-links a:not(.x-link):not(.wl-nav){
         display:none;
+    }
+
+    .x-link{
+        padding:10px 11px;
+    }
+
+    .wl-nav{
+        padding:10px 11px !important;
     }
 
     .nav-inner{
@@ -951,14 +1236,36 @@ footer{
         margin-top:45px;
     }
 
+    .wl-box{
+        padding:20px 16px;
+    }
+
+    .wl-task{
+        padding:13px;
+    }
+
+    .wl-task-description{
+        display:none;
+    }
+
+    .wl-task-btn{
+        min-width:80px;
+    }
+
+    .wl-input-row{
+        flex-direction:column;
+    }
+
+    .wl-submit-btn{
+        width:100%;
+    }
+
     .footer-inner{
         flex-direction:column;
 
         align-items:flex-start;
     }
-
 }
-
 
 @media(max-width:430px){
 
@@ -986,11 +1293,19 @@ footer{
         font-size:11px;
     }
 
+    .wl-task-title{
+        font-size:10px;
+    }
+
+    .wl-task-btn{
+        min-width:74px;
+        font-size:8px;
+    }
 }
 
 
 /* =========================
-   REDUCE MOTION
+REDUCE MOTION
 ========================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -1006,18 +1321,16 @@ footer{
         animation-iteration-count:1 !important;
         transition-duration:.01ms !important;
     }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
 
 <!-- =========================
-     NAVBAR
+NAVBAR
 ========================= -->
 
 <header class="navbar">
@@ -1036,6 +1349,10 @@ footer{
 
             <a href="#collection">
                 COLLECTION
+            </a>
+
+            <a href="#wl" class="wl-nav">
+                WL
             </a>
 
             <a href="#roadmap">
@@ -1063,7 +1380,7 @@ footer{
 
 
 <!-- =========================
-     HERO
+HERO
 ========================= -->
 
 <main id="home">
@@ -1174,7 +1491,7 @@ footer{
 
 
 <!-- =========================
-     COLLECTION
+COLLECTION
 ========================= -->
 
 <section
@@ -1671,7 +1988,317 @@ footer{
 
 
 <!-- =========================
-     ROADMAP
+WL
+========================= -->
+
+<section
+    class="wl-section"
+    id="wl"
+>
+
+    <div class="container">
+
+        <div class="wl-header reveal">
+
+            <div>
+
+                <div class="section-label">
+                    EARLY ACCESS
+                </div>
+
+                <h2 class="section-title">
+                    WHITELIST
+                </h2>
+
+                <p class="section-text">
+                    Complete the tasks below to enter the ARC ORIGIN
+                    whitelist.
+                </p>
+
+            </div>
+
+            <div class="wl-status">
+
+                <div class="wl-status-label">
+                    YOUR PROGRESS
+                </div>
+
+                <div
+                    class="wl-status-value"
+                    id="wlProgress"
+                >
+                    0 / 5 COMPLETE
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="wl-box reveal">
+
+            <div class="wl-box-title">
+                COMPLETE TO ENTER
+            </div>
+
+            <div class="wl-box-subtitle">
+                Open each task, complete the action on X,
+                then return here and mark it as completed.
+            </div>
+
+
+            <div class="wl-tasks">
+
+
+                <!-- TASK 01 -->
+
+                <div
+                    class="wl-task"
+                    data-task="follow"
+                >
+
+                    <div class="wl-task-left">
+
+                        <div class="wl-task-number">
+                            01
+                        </div>
+
+                        <div class="wl-task-text">
+
+                            <div class="wl-task-title">
+                                FOLLOW @ARCORIGINFUN
+                            </div>
+
+                            <div class="wl-task-description">
+                                Follow the official ARC ORIGIN account on X.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="wl-task-btn"
+                        data-url="https://x.com/ArcOriginfun"
+                    >
+                        COMPLETE ↗
+                    </button>
+
+                </div>
+
+
+                <!-- TASK 02 -->
+
+                <div
+                    class="wl-task"
+                    data-task="like"
+                >
+
+                    <div class="wl-task-left">
+
+                        <div class="wl-task-number">
+                            02
+                        </div>
+
+                        <div class="wl-task-text">
+
+                            <div class="wl-task-title">
+                                LIKE THE WL POST
+                            </div>
+
+                            <div class="wl-task-description">
+                                Like the official whitelist announcement.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="wl-task-btn"
+                        data-url="PASTE_LIKE_POST_URL_HERE"
+                    >
+                        COMPLETE ↗
+                    </button>
+
+                </div>
+
+
+                <!-- TASK 03 -->
+
+                <div
+                    class="wl-task"
+                    data-task="repost"
+                >
+
+                    <div class="wl-task-left">
+
+                        <div class="wl-task-number">
+                            03
+                        </div>
+
+                        <div class="wl-task-text">
+
+                            <div class="wl-task-title">
+                                REPOST THE WL POST
+                            </div>
+
+                            <div class="wl-task-description">
+                                Repost the official whitelist announcement.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="wl-task-btn"
+                        data-url="PASTE_REPOST_POST_URL_HERE"
+                    >
+                        COMPLETE ↗
+                    </button>
+
+                </div>
+
+
+                <!-- TASK 04 -->
+
+                <div
+                    class="wl-task"
+                    data-task="comment"
+                >
+
+                    <div class="wl-task-left">
+
+                        <div class="wl-task-number">
+                            04
+                        </div>
+
+                        <div class="wl-task-text">
+
+                            <div class="wl-task-title">
+                                COMMENT ON THE POST
+                            </div>
+
+                            <div class="wl-task-description">
+                                Leave a genuine comment on the WL post.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="wl-task-btn"
+                        data-url="PASTE_COMMENT_POST_URL_HERE"
+                    >
+                        COMPLETE ↗
+                    </button>
+
+                </div>
+
+
+                <!-- TASK 05 -->
+
+                <div
+                    class="wl-task"
+                    data-task="tag"
+                >
+
+                    <div class="wl-task-left">
+
+                        <div class="wl-task-number">
+                            05
+                        </div>
+
+                        <div class="wl-task-text">
+
+                            <div class="wl-task-title">
+                                TAG 2 PEOPLE
+                            </div>
+
+                            <div class="wl-task-description">
+                                Tag two people in your comment on the WL post.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="wl-task-btn"
+                        data-url="PASTE_COMMENT_POST_URL_HERE"
+                    >
+                        COMPLETE ↗
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <div
+                class="wl-submit locked"
+                id="wlSubmit"
+            >
+
+                <label
+                    class="wl-submit-label"
+                    for="wlUsername"
+                >
+                    X USERNAME / ENTRY ID
+                </label>
+
+                <div class="wl-input-row">
+
+                    <input
+                        type="text"
+                        id="wlUsername"
+                        class="wl-input"
+                        placeholder="@yourusername"
+                        maxlength="50"
+                        autocomplete="off"
+                        disabled
+                    >
+
+                    <button
+                        type="button"
+                        class="wl-submit-btn"
+                        id="wlSubmitBtn"
+                        disabled
+                    >
+                        SUBMIT ENTRY
+                    </button>
+
+                </div>
+
+                <div
+                    class="wl-message"
+                    id="wlMessage"
+                >
+                    Complete all 5 tasks to unlock your entry.
+                </div>
+
+            </div>
+
+
+            <div class="wl-note">
+                NOTE: This checklist records completion in your browser.
+                It does not independently verify actions on X.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+ROADMAP
 ========================= -->
 
 <section
@@ -1785,7 +2412,7 @@ footer{
 
 
 <!-- =========================
-     FAQ
+FAQ
 ========================= -->
 
 <section
@@ -1814,7 +2441,10 @@ footer{
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button
+                    class="faq-question"
+                    type="button"
+                >
 
                     <span>
                         What is ARC ORIGIN?
@@ -1841,7 +2471,10 @@ footer{
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button
+                    class="faq-question"
+                    type="button"
+                >
 
                     <span>
                         How many NFTs are there?
@@ -1867,7 +2500,10 @@ footer{
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button
+                    class="faq-question"
+                    type="button"
+                >
 
                     <span>
                         Will holders get future benefits?
@@ -1894,7 +2530,10 @@ footer{
 
             <div class="faq-item">
 
-                <button class="faq-question">
+                <button
+                    class="faq-question"
+                    type="button"
+                >
 
                     <span>
                         Where can I follow ARC?
@@ -1926,7 +2565,7 @@ footer{
 
 
 <!-- =========================
-     COMMUNITY
+COMMUNITY
 ========================= -->
 
 <section class="community">
@@ -1963,7 +2602,7 @@ footer{
 
 
 <!-- =========================
-     FOOTER
+FOOTER
 ========================= -->
 
 <footer>
@@ -1998,7 +2637,7 @@ footer{
 <script>
 
 /* =========================
-   NFT DATA
+NFT DATA
 ========================= */
 
 const nfts = [
@@ -2018,7 +2657,7 @@ const nfts = [
 
 
 /* =========================
-   HERO SLIDER
+HERO SLIDER
 ========================= */
 
 const heroNFT =
@@ -2033,7 +2672,6 @@ const nextBtn =
 const sliderDots =
     document.getElementById("sliderDots");
 
-
 let currentIndex = 0;
 
 let isAnimating = false;
@@ -2042,7 +2680,7 @@ let autoSlide = null;
 
 
 /* =========================
-   CREATE DOTS
+CREATE DOTS
 ========================= */
 
 nfts.forEach((_,index) => {
@@ -2067,7 +2705,6 @@ nfts.forEach((_,index) => {
 
 });
 
-
 const dots =
     document.querySelectorAll(".dot");
 
@@ -2087,7 +2724,7 @@ function updateDots(){
 
 
 /* =========================
-   NFT CHANGE
+NFT CHANGE
 ========================= */
 
 function changeNFT(newIndex){
@@ -2101,14 +2738,11 @@ function changeNFT(newIndex){
 
     }
 
-
     isAnimating = true;
-
 
     heroNFT.classList.remove(
         "entering"
     );
-
 
     heroNFT.classList.add(
         "switching"
@@ -2119,23 +2753,18 @@ function changeNFT(newIndex){
 
         currentIndex = newIndex;
 
-
         heroNFT.src =
             nfts[currentIndex];
-
 
         heroNFT.classList.remove(
             "switching"
         );
 
-
         void heroNFT.offsetWidth;
-
 
         heroNFT.classList.add(
             "entering"
         );
-
 
         updateDots();
 
@@ -2157,7 +2786,7 @@ function changeNFT(newIndex){
 
 
 /* =========================
-   NEXT
+NEXT
 ========================= */
 
 function nextNFT(){
@@ -2171,7 +2800,7 @@ function nextNFT(){
 
 
 /* =========================
-   PREVIOUS
+PREVIOUS
 ========================= */
 
 function previousNFT(){
@@ -2190,7 +2819,6 @@ nextBtn.addEventListener(
     nextNFT
 );
 
-
 prevBtn.addEventListener(
     "click",
     previousNFT
@@ -2198,13 +2826,12 @@ prevBtn.addEventListener(
 
 
 /* =========================
-   AUTO SLIDER
+AUTO SLIDER
 ========================= */
 
 function startAutoSlide(){
 
     clearInterval(autoSlide);
-
 
     autoSlide =
         setInterval(() => {
@@ -2247,7 +2874,7 @@ startAutoSlide();
 
 
 /* =========================
-   COLLECTION CARDS
+COLLECTION CARDS
 ========================= */
 
 const nftCards =
@@ -2265,9 +2892,7 @@ nftCards.forEach(card => {
                     card.dataset.index
                 );
 
-
             changeNFT(index);
-
 
             window.scrollTo({
 
@@ -2284,7 +2909,7 @@ nftCards.forEach(card => {
 
 
 /* =========================
-   FILTERS
+FILTERS
 ========================= */
 
 const filters =
@@ -2296,7 +2921,6 @@ filters.forEach(filter => {
     filter.addEventListener(
         "click",
         () => {
-
 
             filters.forEach(item => {
 
@@ -2349,7 +2973,7 @@ filters.forEach(filter => {
 
 
 /* =========================
-   FAQ
+FAQ
 ========================= */
 
 const faqItems =
@@ -2376,7 +3000,6 @@ faqItems.forEach(item => {
         "click",
         () => {
 
-
             const alreadyOpen =
                 item.classList.contains(
                     "open"
@@ -2388,7 +3011,6 @@ faqItems.forEach(item => {
                 other.classList.remove(
                     "open"
                 );
-
 
                 other.querySelector(
                     ".faq-answer"
@@ -2403,7 +3025,6 @@ faqItems.forEach(item => {
                     "open"
                 );
 
-
                 answer.style.maxHeight =
                     answer.scrollHeight + "px";
 
@@ -2416,7 +3037,277 @@ faqItems.forEach(item => {
 
 
 /* =========================
-   SCROLL REVEAL
+WL SYSTEM
+========================= */
+
+const wlTasks =
+    document.querySelectorAll(".wl-task");
+
+const wlProgress =
+    document.getElementById("wlProgress");
+
+const wlSubmit =
+    document.getElementById("wlSubmit");
+
+const wlUsername =
+    document.getElementById("wlUsername");
+
+const wlSubmitBtn =
+    document.getElementById("wlSubmitBtn");
+
+const wlMessage =
+    document.getElementById("wlMessage");
+
+
+const completedTasks =
+    new Set(
+        JSON.parse(
+            localStorage.getItem(
+                "arcOriginWLTasks"
+            ) || "[]"
+        )
+    );
+
+
+/* =========================
+UPDATE WL UI
+========================= */
+
+function updateWL(){
+
+    wlTasks.forEach(task => {
+
+        const taskName =
+            task.dataset.task;
+
+        const button =
+            task.querySelector(
+                ".wl-task-btn"
+            );
+
+        const number =
+            task.querySelector(
+                ".wl-task-number"
+            );
+
+
+        if(completedTasks.has(taskName)){
+
+            task.classList.add(
+                "completed"
+            );
+
+            button.textContent =
+                "DONE ✓";
+
+            number.textContent =
+                "✓";
+
+            button.disabled = true;
+
+        }
+        else{
+
+            task.classList.remove(
+                "completed"
+            );
+
+            button.textContent =
+                "COMPLETE ↗";
+
+            number.textContent =
+                taskName === "follow" ? "01" :
+                taskName === "like" ? "02" :
+                taskName === "repost" ? "03" :
+                taskName === "comment" ? "04" :
+                "05";
+
+            button.disabled = false;
+
+        }
+
+    });
+
+
+    const completedCount =
+        completedTasks.size;
+
+
+    wlProgress.textContent =
+        completedCount + " / 5 COMPLETE";
+
+
+    if(completedCount === 5){
+
+        wlSubmit.classList.remove(
+            "locked"
+        );
+
+        wlUsername.disabled = false;
+
+        wlSubmitBtn.disabled = false;
+
+        wlMessage.textContent =
+            "All tasks complete. Enter your X username to submit.";
+
+        wlMessage.classList.add(
+            "success"
+        );
+
+    }
+    else{
+
+        wlSubmit.classList.add(
+            "locked"
+        );
+
+        wlUsername.disabled = true;
+
+        wlSubmitBtn.disabled = true;
+
+        wlMessage.textContent =
+            "Complete all 5 tasks to unlock your entry.";
+
+        wlMessage.classList.remove(
+            "success"
+        );
+
+    }
+
+}
+
+
+/* =========================
+WL TASK CLICK
+========================= */
+
+wlTasks.forEach(task => {
+
+    const button =
+        task.querySelector(
+            ".wl-task-btn"
+        );
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const taskName =
+                task.dataset.task;
+
+            const url =
+                button.dataset.url;
+
+
+            if(
+                completedTasks.has(
+                    taskName
+                )
+            ){
+
+                return;
+
+            }
+
+
+            /*
+            Open the X destination first.
+            Then mark the task as completed
+            when the user returns/clicks again.
+            */
+
+            if(
+                url &&
+                !url.includes(
+                    "PASTE_"
+                )
+            ){
+
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+
+
+            completedTasks.add(
+                taskName
+            );
+
+
+            localStorage.setItem(
+                "arcOriginWLTasks",
+                JSON.stringify(
+                    [...completedTasks]
+                )
+            );
+
+
+            updateWL();
+
+        }
+    );
+
+});
+
+
+/* =========================
+WL SUBMIT
+========================= */
+
+wlSubmitBtn.addEventListener(
+    "click",
+    () => {
+
+        const username =
+            wlUsername.value.trim();
+
+
+        if(username.length < 2){
+
+            wlMessage.textContent =
+                "Please enter your X username.";
+
+            wlMessage.classList.remove(
+                "success"
+            );
+
+            return;
+
+        }
+
+
+        wlMessage.textContent =
+            "Entry recorded locally for " +
+            username +
+            ". You can now wait for the WL announcement.";
+
+        wlMessage.classList.add(
+            "success"
+        );
+
+
+        wlSubmitBtn.textContent =
+            "SUBMITTED ✓";
+
+        wlSubmitBtn.disabled = true;
+
+    }
+);
+
+
+/* =========================
+WL INITIALIZE
+========================= */
+
+updateWL();
+
+
+/* =========================
+SCROLL REVEAL
 ========================= */
 
 const revealElements =
@@ -2424,11 +3315,6 @@ const revealElements =
         ".reveal"
     );
 
-
-/*
-   Lightweight IntersectionObserver.
-   No scroll event listener is used.
-*/
 
 const observer =
     new IntersectionObserver(
@@ -2442,7 +3328,6 @@ const observer =
                     entry.target.classList.add(
                         "visible"
                     );
-
 
                     observer.unobserve(
                         entry.target
@@ -2470,13 +3355,8 @@ revealElements.forEach(element => {
 
 
 /* =========================
-   PRELOAD HERO SLIDER
+PRELOAD HERO SLIDER
 ========================= */
-
-/*
-   Load remaining hero images after
-   the page has become idle.
-*/
 
 function preloadImages(){
 
